@@ -11,7 +11,6 @@ namespace FPS
         #region |VARIABLES
 
         #region ||Movement
-
         [Header("Movement")] public float walkSpeed = 5;
         public float runSpeed = 10;
         public bool canAirWalk;
@@ -20,14 +19,13 @@ namespace FPS
         public float movementDamping;
 
         //*PRIVATE//
-        private bool _isWalking = true;
+        [HideInInspector] public bool _isWalking = true;
+        public bool _canRun = true;
         private Vector2 _moveInput;
         private Vector3 _moveDir = Vector3.zero;
-
         #endregion
 
         #region ||Jumping
-
         [Header("Jumping")] public float jumpSpeed = 10;
         public float jumpCut = .5f;
         public float coyoteJump = .2f;
@@ -38,20 +36,16 @@ namespace FPS
         private float _coyoteJump;
         private float _grndRem;
         private bool _isGrounded;
-
         #endregion
 
         #region ||Mouse
-
         [Header("Mouse")] public MouseLook mouseLook;
 
         //*PRIVATE//
         private Camera _cam;
-
         #endregion
 
         #region ||Gravity
-
         [Header("Gravity")] public float gravityScale = 2;
         public float groundForce = 10;
 
@@ -60,31 +54,25 @@ namespace FPS
         #endregion
 
         #region ||Audio
-
         [Header("Audio")] public AudioClip jumpSound; // the sound played when character leaves the ground.
         public AudioClip landSound; // the sound played when character touches back on ground.
         public AudioClip[] footstepSounds; // an array of footstep sounds that will be randomly selected from.
 
         //*PRIVATE//
         private AudioSource _audioSource;
-
         #endregion
 
         #region ||Effects
-
         [Header("Effects")] public bool useFovKick = true;
         public FOVKick fovKick = new FOVKick();
         public bool useHeadBob = true;
         public CurveControlledBob headBob = new CurveControlledBob();
         public LerpControlledBob jumpBob = new LerpControlledBob();
         public float stepInterval;
-
         #endregion
 
         #region ||Collision
-
         [Header("Collision")] public float impactForceMultiplier = .2f;
-
         #endregion
 
         #region ||Input
@@ -92,22 +80,18 @@ namespace FPS
         public int playerID = 0;
         [HideInInspector]
         public Player _player;
-
         #endregion
 
         #region ||Misc
-
         [Header("Misc.")]
         //*PRIVATE//
         private float _yRotation;
-
         private CharacterController _controller;
         private CollisionFlags _collisionFlags;
         private bool _prevGrounded;
         private Vector3 _ogCameraPos;
         private float _stepCycle;
         private float _nextStep;
-
         #endregion
 
         #endregion
@@ -320,6 +304,11 @@ namespace FPS
             float vertical = _player.GetAxis("Vertical");
 
             bool wasWalking = _isWalking;
+
+            if (!_canRun)
+            {
+                _isWalking = true;
+            }
 
             // Set the correct speed based off the running input
             speed = _isWalking ? walkSpeed : runSpeed;

@@ -11,6 +11,7 @@ namespace FPS
     {
         public float xSensitivity = 2f;
         public float ySensitivity = 2f;
+        public float scopingMultiplier = .5f;
         public bool clampVerticalRotation = true;
         public float minX = -90F;
         public float maxX = 90F;
@@ -21,7 +22,8 @@ namespace FPS
 
         private Quaternion charTargetRot;
         private bool cursorIsLocked = true;
-        
+        public static bool _isScoping;
+
         [HideInInspector]
         public Player _player;
 
@@ -38,6 +40,12 @@ namespace FPS
             Vector2 reInput = new Vector2(_player.GetAxis("Mouse X"), _player.GetAxis("Mouse Y"));
             var yRot = (input.x + reInput.x) * xSensitivity;
             var xRot = (input.y + reInput.y) * ySensitivity;
+
+            if (_isScoping)
+            {
+                xRot *= scopingMultiplier;
+                yRot *= scopingMultiplier;
+            }
 
             charTargetRot *= Quaternion.Euler(0f, yRot, 0f);
             camTargetRot *= Quaternion.Euler(-xRot, 0f, 0f);

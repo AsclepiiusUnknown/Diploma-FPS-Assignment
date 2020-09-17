@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.Audio;
+using Sirenix.OdinInspector;
 
 [System.Serializable]
 public class Sound
 {
+    [EnumToggleButtons]
+    public SoundDimensions soundDimension;
+
     public string name;
 
     public AudioClip clip;
@@ -17,6 +21,16 @@ public class Sound
     public bool loop = false;
     public bool playOnAwake = false;
 
+    [ShowIf("soundDimension", SoundDimensions.ThreeD)]
+    public GameObject parentObject;
+
     [HideInInspector]
     public AudioSource source;
+}
+
+[System.Serializable]
+public enum SoundDimensions
+{
+    TwoD,
+    ThreeD
 }

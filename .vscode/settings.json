@@ -18,6 +18,8 @@
     "editor.cursorBlinking": "phase",
     //*Intellisense
     "editor.acceptSuggestionOnEnter": "smart",
+    //*Synthwave '84 Theme Settings
+    "synthwave84.brightness": 1,
     //*Misc
     "editor.detectIndentation": true,
     "editor.codeLens": false,
