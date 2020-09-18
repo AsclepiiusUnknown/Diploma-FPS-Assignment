@@ -104,7 +104,7 @@ public class Grenade : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         if (grenadeType == GrenadeTypes.Impact)
         {
