@@ -118,6 +118,11 @@ namespace FPS
             mouseLook.Init(transform, _cam.transform);
 
             #endregion
+
+            #region |Cursor Setup
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = false;
+            #endregion
         }
 
         private void Update()

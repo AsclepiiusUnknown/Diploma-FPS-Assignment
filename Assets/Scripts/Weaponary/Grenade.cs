@@ -29,6 +29,8 @@ public class Grenade : MonoBehaviour
     private bool hasExploded = false;
     private Rigidbody _rb;
     private AudioManager audioManager;
+
+    public AnimationCurve curve;
     #endregion
 
     private void Start()
@@ -91,6 +93,16 @@ public class Grenade : MonoBehaviour
             {
                 Rigidbody rb = nearbyObject.GetComponent<Rigidbody>();
                 rb.AddExplosionForce(force, transform.position, blastRadius);
+            }
+
+            if (nearbyObject.GetComponent<ImpactReceiver>() != null)
+            {
+                print("gotit");
+                ImpactReceiver receiver = nearbyObject.GetComponent<ImpactReceiver>();
+
+                Vector3 dir = receiver.transform.position - gameObject.transform.position;
+                float altForce = Mathf.Clamp(force / 3, 0, 15);
+                receiver.AddImpact(dir, altForce);
             }
 
             // if (nearbyObject.GetComponent<Grenade>() != null)

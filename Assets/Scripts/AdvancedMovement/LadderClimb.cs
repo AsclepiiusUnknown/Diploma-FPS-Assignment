@@ -8,13 +8,13 @@ public class LadderClimb : MonoBehaviour
 {
     public LayerMask whatIsWall;
     public float checkDist = 1;
-    public float jumpSpeed;
+    public float climbSpeed;
     public float pushSpeed;
-    public float maxJumpSpeed;
+    public float maxClimbSpeed;
     public FpsCustom _custom;
 
-    private bool _isWallFront;
-    private bool _isWallJumping = false;
+    private bool _isLadderFront;
+    private bool _isClimbing = false;
     private CharacterController _controller;
     private Player _player;
     private RaycastHit hit;
@@ -27,35 +27,43 @@ public class LadderClimb : MonoBehaviour
 
     private void Update()
     {
-        CheckForWall();
+        CheckFront();
 
-        if (_player.GetButtonDown("Jump") && _isWallFront)
-            StartWallJump();
+        if (_player.GetAxis("Vertical") > 0 && _isLadderFront)
+            StartClimb();
+
+        if (_player.GetButtonDown("Jump") && _isClimbing)
+            PushOffWall();
     }
 
-    void StartWallJump()
+    void StartClimb()
     {
         _custom._useGravity = false;
-        _isWallJumping = true;
+        _isClimbing = true;
 
-        // if (_controller.velocity.magnitude <= maxJumpSpeed)
-        // {
-        _controller.Move(transform.up * (jumpSpeed * Time.deltaTime));
-        _controller.Move(hit.normal * (pushSpeed * Time.deltaTime));
-        // }
+        if (_controller.velocity.magnitude <= maxClimbSpeed)
+        {
+            _controller.Move(transform.up * (climbSpeed * Time.deltaTime));
+        }
     }
 
-    void StopWallJump()
+    void StopClimb()
     {
-        _isWallJumping = false;
+        print("stopping");
+        _isClimbing = false;
         _custom._useGravity = true;
     }
 
-    void CheckForWall()
+    void CheckFront()
     {
-        var position = transform.position;
-        _isWallFront = Physics.Raycast(position, transform.forward, out hit, checkDist, whatIsWall);
+        Vector3 position = transform.position;
+        _isLadderFront = Physics.Raycast(position, transform.forward, out hit, checkDist, whatIsWall);
 
-        if (!_isWallFront) StopWallJump();
+        if (!_isLadderFront && _isClimbing) StopClimb();
+    }
+
+    void PushOffWall()
+    {
+        _controller.Move(hit.normal * (pushSpeed * Time.deltaTime));
     }
 }
