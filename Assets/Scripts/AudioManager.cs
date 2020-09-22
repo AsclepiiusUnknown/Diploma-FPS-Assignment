@@ -135,7 +135,7 @@ public class AudioManager : MonoBehaviour
     {
         int ranomIndex = 0;
 
-        switch (WeaponSwitching.currentType)
+        switch (WeaponHandler.currentType)
         {
             case GunTypes.Rifle:
                 ranomIndex = UnityEngine.Random.Range(0, rifleShots.Length);

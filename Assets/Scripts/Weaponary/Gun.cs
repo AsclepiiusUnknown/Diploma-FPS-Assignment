@@ -197,7 +197,7 @@ public class Gun : MonoBehaviour
         Destroy(muzzleObject, 5);
 
         //play a gunshot sound
-        AudioManager.instance.PlayGunshot(WeaponSwitching.currentType);
+        AudioManager.instance.PlayGunshot(WeaponHandler.currentType);
 
         //reduce ammo accordingly
         _currentAmmo--;

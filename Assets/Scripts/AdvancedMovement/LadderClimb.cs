@@ -4,6 +4,7 @@ using UnityEngine;
 using FPS;
 using Rewired;
 
+[RequireComponent(typeof(CharacterController), typeof(FpsCustom))]
 public class LadderClimb : MonoBehaviour
 {
     public LayerMask whatIsWall;
@@ -11,29 +12,36 @@ public class LadderClimb : MonoBehaviour
     public float climbSpeed;
     public float pushSpeed;
     public float maxClimbSpeed;
-    public FpsCustom _custom;
 
     private bool _isLadderFront;
     private bool _isClimbing = false;
     private CharacterController _controller;
+    private FpsCustom _custom;
     private Player _player;
     private RaycastHit hit;
+
+    private void Awake()
+    {
+        _controller = GetComponent<CharacterController>();
+        _custom = GetComponent<FpsCustom>();
+    }
 
     private void Start()
     {
         _player = _custom._player;
-        _controller = GetComponent<CharacterController>();
     }
 
     private void Update()
     {
         CheckFront();
 
-        if (_player.GetAxis("Vertical") > 0 && _isLadderFront)
-            StartClimb();
-
-        if (_player.GetButtonDown("Jump") && _isClimbing)
+        if (!_controller.isGrounded && _player.GetButtonDown("Jump") && _isClimbing)
             PushOffWall();
+
+        if (_isLadderFront && !_isClimbing)
+            StartClimb();
+        else if (!_isLadderFront)
+            StopClimb();
     }
 
     void StartClimb()

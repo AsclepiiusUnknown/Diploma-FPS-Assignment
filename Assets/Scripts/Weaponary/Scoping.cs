@@ -59,7 +59,7 @@ public class Scoping : MonoBehaviour
         if (this.enabled && MouseLook._isScoping != this._isScoping)
             MouseLook._isScoping = this._isScoping;
 
-        if (scopeOverlay.activeSelf && (WeaponSwitching.currentType != GunTypes.Sniper || !_isScoping))
+        if (scopeOverlay.activeSelf && (WeaponHandler.currentType != GunTypes.Sniper || !_isScoping))
             scopeOverlay.SetActive(false);
 
         if (Input.GetMouseButtonDown(1) || _player.GetButtonDown("Scope"))
@@ -96,7 +96,7 @@ public class Scoping : MonoBehaviour
         _custom._canRun = !isScoping;
         crosshair.SetActive(!isScoping);
 
-        if (WeaponSwitching.currentType == GunTypes.Sniper && isScoping)
+        if (WeaponHandler.currentType == GunTypes.Sniper && isScoping)
         {
             if (isScoping)
             {

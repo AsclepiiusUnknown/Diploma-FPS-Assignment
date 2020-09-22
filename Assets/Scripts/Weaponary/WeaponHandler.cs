@@ -3,7 +3,7 @@ using Rewired;
 using UnityEngine.UI;
 using FPS;
 
-public class WeaponSwitching : MonoBehaviour
+public class WeaponHandler : MonoBehaviour
 {
     #region |Variables
     // * //
@@ -20,6 +20,10 @@ public class WeaponSwitching : MonoBehaviour
     #region ||References
     private Player _player;
     private FpsCustom _custom;
+    #endregion
+
+    #region ||Flash Light
+    public GameObject flashLight;
     #endregion
     #endregion
 
@@ -83,6 +87,9 @@ public class WeaponSwitching : MonoBehaviour
 
         if (prevSelection != selectedWeapon)
             SelectWeapon();
+
+        if (_player.GetButtonDown("Toggle Light"))
+            ToggleLight();
     }
 
     int GetInputs()
@@ -121,6 +128,11 @@ public class WeaponSwitching : MonoBehaviour
         }
     }
     #endregion
+
+    void ToggleLight()
+    {
+        flashLight.SetActive(!flashLight.activeSelf);
+    }
 }
 
 [System.Serializable]
