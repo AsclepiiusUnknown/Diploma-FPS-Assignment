@@ -223,19 +223,19 @@ namespace FPS
 
             #region ||Ground Checks
 
-            if (_useGravity)
+            //! if (_useGravity)
+            // {
+            if (_controller.isGrounded)
             {
-                if (_controller.isGrounded)
-                {
-                    //Apply a set force to ensure we remain on the ground
-                    _moveDir.y = -groundForce;
-                }
-                else
-                {
-                    // Apply gravity modified by the custom gravity scale and time in order to bring us down
-                    _moveDir += Physics.gravity * (gravityScale * Time.fixedDeltaTime);
-                }
+                //Apply a set force to ensure we remain on the ground
+                _moveDir.y = -groundForce;
             }
+            else
+            {
+                // Apply gravity modified by the custom gravity scale and time in order to bring us down
+                _moveDir += Physics.gravity * (gravityScale * Time.fixedDeltaTime);
+            }
+            // }
 
             // If we are grounded
             if (_isGrounded && _coyoteJump > 0)

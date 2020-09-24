@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TDM.unity
     guid: 09c29f4f7df14a647ac325e1375db166
+  - enabled: 1
+    path: Assets/Scenes/1v1.unity
+    guid: f5da1006a6a9dc943bec88a413f99405
   m_configObjects: {}
