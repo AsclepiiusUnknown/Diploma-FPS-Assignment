@@ -1,0 +1,371 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8355884306367250796
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8355884306367250798}
+  - component: {fileID: 8355884306367250799}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8355884306367250798
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8355884306367250796}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.959615, y: 5.9923573, z: -3.2680764}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8355884306367250799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8355884306367250796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d566d11b0054cbe46a24f8993c0c80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - soundDimension: 0
+    name: Main Theme
+    clip: {fileID: 8300000, guid: 0f74de2e5179bdd4cbd016f3aa1be561, type: 3}
+    mixer: {fileID: -3032928859726313982, guid: 336e13bc610019b429533d29515d6001,
+      type: 2}
+    volume: 0.75
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  - soundDimension: 0
+    name: Rifle Reload
+    clip: {fileID: 8300000, guid: b0a09e5527059f24f8a59ac44e59cb34, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  - soundDimension: 0
+    name: Pistol Cooldown
+    clip: {fileID: 8300000, guid: 3cea3878aa390a548a7fc6f6bfc90ecc, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  - soundDimension: 0
+    name: Shotgun Cooldown
+    clip: {fileID: 8300000, guid: 126e0b1db5cd6f54da28da446eeb67c0, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  - soundDimension: 0
+    name: Sniper Cooldown
+    clip: {fileID: 8300000, guid: 5e3a39465e27e4d49b0d3c965d3bff8b, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  - soundDimension: 0
+    name: Frag Explosion
+    clip: {fileID: 8300000, guid: 65ad39cb1bf073e479ee4604049204e4, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  - soundDimension: 0
+    name: Sticky Explosion
+    clip: {fileID: 8300000, guid: 3dff48207de04874d95a0c737e49024a, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  - soundDimension: 0
+    name: Stun Explosion
+    clip: {fileID: 8300000, guid: bcfd3af11c6c7154ebded31f39b97e2b, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  rifleShots:
+  - soundDimension: 0
+    name: Rifle01
+    clip: {fileID: 8300000, guid: 4a14985fcced5674bb9a3ec19845dc96, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  - soundDimension: 0
+    name: Rifle02
+    clip: {fileID: 8300000, guid: 0800b4854e84ad243a55e1f7a44844f2, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  - soundDimension: 0
+    name: Rifle03
+    clip: {fileID: 8300000, guid: fa5a8beea5991cb4e8fa6302dc57c59f, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  - soundDimension: 0
+    name: Rifle04
+    clip: {fileID: 8300000, guid: 6f8efae2a70a9f54cbdb5dc8dd4e9fd7, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  - soundDimension: 0
+    name: Rifle05
+    clip: {fileID: 8300000, guid: 5752bcbc37b3cb4448f5ea2854f25740, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  - soundDimension: 0
+    name: Rifle06
+    clip: {fileID: 8300000, guid: 98a3c95a6ae178f4b8249ae2b336832c, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  - soundDimension: 0
+    name: Rifle07
+    clip: {fileID: 8300000, guid: fa55a2f8e3fcfc243be4e933bde97de8, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  - soundDimension: 0
+    name: Rifle08
+    clip: {fileID: 8300000, guid: 74fcae481467c404697202c3dad210a8, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  - soundDimension: 0
+    name: Rifle09
+    clip: {fileID: 8300000, guid: c8c4c2fc396c17d4782362c72b190b27, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  pistolShots:
+  - soundDimension: 0
+    name: Pistol01
+    clip: {fileID: 8300000, guid: 7b43a0ab12997ce4b8b0e0be6cb35007, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  - soundDimension: 0
+    name: Pistol02
+    clip: {fileID: 8300000, guid: dd16a0bc01b76054ba18327bc3b2570e, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  - soundDimension: 0
+    name: Pistol03
+    clip: {fileID: 8300000, guid: 8ac1b8948cce8f1409a0cf8dac5361aa, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  - soundDimension: 0
+    name: Pistol04
+    clip: {fileID: 8300000, guid: 0d7c62cdbb047984fa3096ab202748b4, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  - soundDimension: 0
+    name: Pistol05
+    clip: {fileID: 8300000, guid: fccc46974bfb74a4498b8793b264e90c, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  - soundDimension: 0
+    name: Pistol06
+    clip: {fileID: 8300000, guid: 2fe490fb8c3d2514c97229ce9392de8a, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  shotgunShots:
+  - soundDimension: 0
+    name: Shotgun01
+    clip: {fileID: 8300000, guid: 93b7dd16af071064b8715eae4b1c9bd7, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  - soundDimension: 0
+    name: Shotgun02
+    clip: {fileID: 8300000, guid: f4a036a7d6f0f164e97836f8c8663df3, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  - soundDimension: 0
+    name: Shotgun03
+    clip: {fileID: 8300000, guid: f644087a28da014458c35e870b192f14, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  sniperShots:
+  - soundDimension: 0
+    name: Sniper01
+    clip: {fileID: 8300000, guid: 181c68120cf5c6048897a415bc077598, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  - soundDimension: 0
+    name: Sniper02
+    clip: {fileID: 8300000, guid: cb261abd1107aff4cbd1a37c70a2c9dd, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  - soundDimension: 0
+    name: Sniper03
+    clip: {fileID: 8300000, guid: 48e8dbef8c20da146a5fdc432e961d99, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  - soundDimension: 0
+    name: Sniper04
+    clip: {fileID: 8300000, guid: d530f38638e79184dbbaaf23743bc01f, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  - soundDimension: 0
+    name: Sniper05
+    clip: {fileID: 8300000, guid: 61b8a72c1ace594419d598d28ab743f9, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}
+  - soundDimension: 0
+    name: Sniper06
+    clip: {fileID: 8300000, guid: 98b5831a454304d418930f94e9222ff9, type: 3}
+    mixer: {fileID: 7567401981849025737, guid: 336e13bc610019b429533d29515d6001, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    parentObject: {fileID: 0}
+    source: {fileID: 0}

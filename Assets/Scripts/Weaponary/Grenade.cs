@@ -85,7 +85,7 @@ public class Grenade : MonoBehaviour
 
                 if (nearbyObject.GetComponentInParent<Dummy>() != null)
                 {
-                    nearbyObject.GetComponentInParent<Dummy>().Damage(damage);
+                    nearbyObject.GetComponentInParent<Dummy>().Damage(damage, false);
                 }
             }
 

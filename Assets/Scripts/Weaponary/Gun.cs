@@ -228,7 +228,8 @@ public class Gun : MonoBehaviour
 
             if (hit.transform.GetComponentInParent<Dummy>() != null)
             {
-                hit.transform.GetComponentInParent<Dummy>().Damage(damage);
+                bool _isHeadshot = (hit.transform.gameObject.name == "Head") ? true : false;
+                hit.transform.GetComponentInParent<Dummy>().Damage(damage, _isHeadshot);
                 print("Hit dummy");
             }
 

@@ -6,9 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: a442476b01e30d74f84c7e9dd4db9f2f
+  - enabled: 1
+    path: Assets/Scenes/Practice.unity
+    guid: 02ad53602341ee64fa2d10ee6402f1f8
+  - enabled: 1
     path: Assets/Scenes/TDM.unity
     guid: 09c29f4f7df14a647ac325e1375db166
   - enabled: 1
-    path: Assets/Scenes/1v1.unity
+    path: Assets/Scenes/Duel.unity
     guid: f5da1006a6a9dc943bec88a413f99405
+  - enabled: 1
+    path: Assets/Scenes/Flag.unity
+    guid: f33042ff5ff806243a378355cf5e4aef
   m_configObjects: {}

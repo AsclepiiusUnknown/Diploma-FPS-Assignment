@@ -22,8 +22,14 @@ public class Dummy : MonoBehaviour
         }
     }
 
-    public void Damage(float damage)
+    public void Damage(float damage, bool _isHeadshot)
     {
+        if (_isHeadshot)
+        {
+            Die();
+            return;
+        }
+
         if (hp <= 0)
         {
             Die();
