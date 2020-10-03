@@ -2,7 +2,6 @@ using System;
 using Rewired;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
 
 namespace FPS
 {
