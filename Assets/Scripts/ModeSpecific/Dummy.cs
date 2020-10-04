@@ -44,6 +44,6 @@ public class Dummy : MonoBehaviour
     void Die()
     {
         SetKinematic(false);
-        Destroy(gameObject, 5);
+        gameObject.SetActive(false);
     }
 }

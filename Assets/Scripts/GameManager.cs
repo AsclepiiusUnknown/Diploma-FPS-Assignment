@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public GameModes gameMode = GameModes.None;
+    public static GameModes gameMode = GameModes.None;
+    public static bool _gamePaused = false;
+    public static bool _gameOver = false;
 
-    public void SetGameMode(string _modeName)
+    public static void SetGameMode(string _modeName)
     {
         gameMode = (GameModes)Enum.Parse(typeof(GameModes), _modeName, true);
         print("Game Mode set to " + gameMode.ToString());

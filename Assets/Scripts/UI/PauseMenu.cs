@@ -6,9 +6,6 @@ using FPS;
 
 public class PauseMenu : MonoBehaviour
 {
-    [HideInInspector]
-    public bool isPaused = false;
-
     public GameObject pauseUI;
     public GameObject gameUI;
     public FpsCustom mouseLook;
@@ -20,7 +17,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !GameManager._gameOver)
         {
             TogglePause();
         }
@@ -28,15 +25,21 @@ public class PauseMenu : MonoBehaviour
 
     public void TogglePause()
     {
-        isPaused = !isPaused;
-        Time.timeScale = (isPaused) ? 0 : 1;
-        mouseLook.enabled = (isPaused) ? false : true;//?add bool in mouselook to control pauses
-        gameUI.SetActive(isPaused);
-        pauseUI.SetActive(isPaused);
+        GameManager._gamePaused = !GameManager._gamePaused;
+        Time.timeScale = (GameManager._gamePaused) ? 0 : 1;
+        mouseLook.enabled = (GameManager._gamePaused) ? false : true;//?add bool in mouselook to control pauses
+        gameUI.SetActive(GameManager._gamePaused);
+        pauseUI.SetActive(GameManager._gamePaused);
     }
 
     public void ReturnToMenu()
     {
+        TogglePause();
+        GameManager.gameMode = GameModes.None;
+        print("Game Mode reset");
+
+        GameManager._gameOver = false;
+
         SceneManager.LoadScene(0); //!assuming scene 0 is always main menu
     }
 }
