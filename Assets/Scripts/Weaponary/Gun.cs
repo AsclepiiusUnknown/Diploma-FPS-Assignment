@@ -203,53 +203,70 @@ public class Gun : MonoBehaviour
         _currentAmmo--;
         _totalAmmo--;
 
-        //perform raycast check
-        RaycastHit hit;
-        if (Physics.Raycast(mainCam.transform.position, mainCam.transform.forward, out hit, range))
-        {
-            //damage target if we hit one
-            if (hit.transform.GetComponent<Target>() != null)
-            {
-                Target target = hit.transform.GetComponent<Target>();
-                target.TakeDamage(damage);
-            }
-
-            //move object if it has a rigidbody
-            if (hit.rigidbody != null)
-            {
-                hit.rigidbody.AddForce(-hit.normal * impactForce);
-            }
-
-            if (hit.transform.GetComponent<Grenade>() != null)
-            {
-                Grenade nade = hit.transform.GetComponent<Grenade>();
-                nade.Explode();
-            }
-
-            if (hit.transform.GetComponentInParent<Dummy>() != null)
-            {
-                bool _isHeadshot = (hit.transform.gameObject.name == "Head") ? true : false;
-                hit.transform.GetComponentInParent<Dummy>().Damage(damage, _isHeadshot);
-                print("Hit dummy");
-            }
-
-            #region ||Impact Effects
-            //check that we have impact effects
-            if (impactEffects.Length <= 0)
-                return;
-            //randomise effect choice
-            int randomImpact = Random.Range(0, impactEffects.Length);
-
-            //create and destroy impact effect
-            GameObject impactObject = Instantiate(impactEffects[randomImpact], hit.point, Quaternion.LookRotation(hit.normal));
-            Destroy(impactObject, 5);
-            #endregion
-        }
+        CheckHits();
 
         AmmoCountUpdate();
 
         //Start Cooldown
         StartCoroutine(Cooldown());
+    }
+
+    void CheckHits()
+    {
+        //perform raycast check
+        RaycastHit _hit;
+        if (Physics.Raycast(mainCam.transform.position, mainCam.transform.forward, out _hit, range))
+        {
+            //*TARGET
+            if (_hit.transform.GetComponent<Target>() != null)
+            {
+                Target target = _hit.transform.GetComponent<Target>();
+                target.TakeDamage(damage);
+            }
+
+            //*RIGIDBODY
+            if (_hit.rigidbody != null)
+            {
+                _hit.rigidbody.AddForce(-_hit.normal * impactForce);
+            }
+
+            //*GRENADE
+            if (_hit.transform.GetComponent<Grenade>() != null)
+            {
+                Grenade nade = _hit.transform.GetComponent<Grenade>();
+                nade.Explode();
+            }
+
+            //*DUMMY
+            if (_hit.transform.GetComponentInParent<Dummy>() != null)
+            {
+                bool _isHeadshot = (_hit.transform.gameObject.name == "Head") ? true : false;
+                _hit.transform.GetComponentInParent<Dummy>().Damage(damage, _isHeadshot);
+                print("Hit dummy");
+            }
+
+            //*LIGHTBULB
+            if (_hit.transform.GetComponent<Lightbulb>() != null)
+            {
+                Lightbulb _bulb = _hit.transform.GetComponent<Lightbulb>();
+                _bulb.Explode();
+            }
+
+            ImpactEffects(_hit);
+        }
+    }
+
+    void ImpactEffects(RaycastHit _hit)
+    {
+        //check that we have impact effects
+        if (impactEffects.Length <= 0)
+            return;
+        //randomise effect choice
+        int randomImpact = Random.Range(0, impactEffects.Length);
+
+        //create and destroy impact effect
+        GameObject impactObject = Instantiate(impactEffects[randomImpact], _hit.point, Quaternion.LookRotation(_hit.normal));
+        Destroy(impactObject, 5);
     }
     #endregion
 

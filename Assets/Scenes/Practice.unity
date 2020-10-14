@@ -1477,6 +1477,8 @@ GameObject:
   - component: {fileID: 170393288}
   - component: {fileID: 170393287}
   - component: {fileID: 170393286}
+  - component: {fileID: 170393289}
+  - component: {fileID: 170393290}
   m_Layer: 0
   m_Name: Ceiling Light (1)
   m_TagString: Untagged
@@ -1605,6 +1607,34 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170393284}
+  m_Mesh: {fileID: 4300000, guid: 8edd1068832994143b819c48bc08ed32, type: 3}
+--- !u!114 &170393289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170393284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3731597975bb0d04a960eaf70a4af188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyEffect: {fileID: 8945378913049333993, guid: 428e3fd4c0685cf438cb361008d65783,
+    type: 3}
+--- !u!64 &170393290
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170393284}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 8edd1068832994143b819c48bc08ed32, type: 3}
 --- !u!1 &174547078
 GameObject:
@@ -6928,7 +6958,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.05
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -7686,6 +7716,7 @@ RectTransform:
   - {fileID: 108050436}
   - {fileID: 1929970462}
   - {fileID: 307620198}
+  - {fileID: 2041800757}
   - {fileID: 1351253751}
   m_Father: {fileID: 917004337}
   m_RootOrder: 1
@@ -11408,7 +11439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f0a51ff72ca03478b01b1c99bd4eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  maxHealth: 100
 --- !u!54 &996475418
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14654,7 +14685,7 @@ RectTransform:
   - {fileID: 687301738}
   - {fileID: 1621676312}
   m_Father: {fileID: 703638774}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16153,7 +16184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f0a51ff72ca03478b01b1c99bd4eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  maxHealth: 100
 --- !u!54 &1588490531
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19795,6 +19826,8 @@ GameObject:
   - component: {fileID: 1945569013}
   - component: {fileID: 1945569012}
   - component: {fileID: 1945569011}
+  - component: {fileID: 1945569014}
+  - component: {fileID: 1945569015}
   m_Layer: 0
   m_Name: Ceiling Light (2)
   m_TagString: Untagged
@@ -19923,6 +19956,34 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1945569009}
+  m_Mesh: {fileID: 4300000, guid: 8edd1068832994143b819c48bc08ed32, type: 3}
+--- !u!114 &1945569014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945569009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3731597975bb0d04a960eaf70a4af188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyEffect: {fileID: 8945378913049333993, guid: 428e3fd4c0685cf438cb361008d65783,
+    type: 3}
+--- !u!64 &1945569015
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945569009}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 8edd1068832994143b819c48bc08ed32, type: 3}
 --- !u!1 &1968650963
 GameObject:
@@ -20313,6 +20374,41 @@ Transform:
   m_Father: {fileID: 420930553}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2041800756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2041800757}
+  m_Layer: 5
+  m_Name: Crosshair
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2041800757
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041800756}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 703638774}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2045133839
 GameObject:
   m_ObjectHideFlags: 0
@@ -21914,8 +22010,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1961272882217195}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0.075}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: -0, y: 0, z: 0.0123}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 384610595}
   m_RootOrder: 3
@@ -80895,6 +80991,8 @@ GameObject:
   - component: {fileID: 3015752304401014050}
   - component: {fileID: 3015752304401998748}
   - component: {fileID: 3015752304399969861}
+  - component: {fileID: 3015752304399969862}
+  - component: {fileID: 3015752304399969863}
   m_Layer: 0
   m_Name: Ceiling Light
   m_TagString: Untagged
@@ -80963,6 +81061,34 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &3015752304399969862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3015752304399969860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3731597975bb0d04a960eaf70a4af188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyEffect: {fileID: 8945378913049333993, guid: 428e3fd4c0685cf438cb361008d65783,
+    type: 3}
+--- !u!64 &3015752304399969863
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3015752304399969860}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 8edd1068832994143b819c48bc08ed32, type: 3}
 --- !u!4 &3015752304400186986
 Transform:
   m_ObjectHideFlags: 0

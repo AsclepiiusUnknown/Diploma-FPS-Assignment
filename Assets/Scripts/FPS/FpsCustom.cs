@@ -99,28 +99,24 @@ namespace FPS
         private void Start()
         {
             #region |Component Gathering
-
             _controller = GetComponent<CharacterController>();
             _audioSource = GetComponent<AudioSource>();
             _cam = Camera.main;
             _player = ReInput.players.GetPlayer(playerID);
             mouseLook._player = _player;
-
             #endregion
 
             #region |Component Setup
-
             if (_cam == null) return;
             _ogCameraPos = _cam.transform.localPosition;
             fovKick.Setup(_cam);
             headBob.Setup(_cam, stepInterval);
             _nextStep = _stepCycle / 2f;
             mouseLook.Init(transform, _cam.transform);
-
             #endregion
 
             #region |Cursor Setup
-            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             #endregion
         }
