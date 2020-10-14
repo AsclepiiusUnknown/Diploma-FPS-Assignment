@@ -6,49 +6,22 @@ using TMPro;
 
 public class GM1v1 : MonoBehaviour
 {
-    public FpsCustom player1;
-    public FpsCustom player2;
+    public PlayerStats player1;
+    public PlayerStats player2;
+
+    [Space]
+    public int winningCount = 3;
 
     public GameObject victoryUI;
     public TextMeshProUGUI winText;
-    [TextArea]
-    public string winMessage = " has won the match!!";
+    [TextArea] public string winMessage = " has won the match!!";
 
     private void Start()
     {
-        FpsCustom[] _players = FindObjectsOfType<FpsCustom>();
-
-        if (_players.Length > 2)
+        if (player1.custom == null || player2.custom == null)
         {
-            Debug.LogError("**ERROR**\nThere are too many players in the game for the 1v1 mode to operate properly!!");
+            Debug.LogError("**ERROR**\n Players are missing!!");
             return;
-        }
-
-        for (int i = 0; i < _players.Length; i++)
-        {
-            if (_players[i].gameObject.name == "Player1")
-            {
-                player1 = _players[i];
-            }
-            else if (_players[i].gameObject.name == "Player2")
-            {
-                player2 = _players[i];
-            }
-            else
-            {
-                Debug.LogError("**ERROR**\nIncorrect player naming converntions (check here)!!");
-            }
-        }
-    }
-
-    private void Update()
-    {
-        if (!PlayersActive(player1, player2))
-        {
-            victoryUI.SetActive(true);
-            string winner = (player1.gameObject.activeSelf) ? "Player 1" : "Player 2";
-            winText.text = winner + winMessage;
-            GameManager._gameOver = true;
         }
     }
 
@@ -63,4 +36,24 @@ public class GM1v1 : MonoBehaviour
             return true;
         }
     }
+
+    void PlayerDied(int _playerId)
+    {
+        // if (player id == player 1 id)
+        victoryUI.SetActive(true);
+        string winner = (player1.custom.gameObject.activeSelf) ? "Player 1" : "Player 2";
+        winText.text = winner + winMessage;
+        GameManager._gameOver = true;
+    }
+
+    // Event that fires when players die (playerId) -> Handler for both players, if (player == playerId) playerDeaths++ 
+}
+
+[System.Serializable]
+public struct PlayerStats
+{
+    public FpsCustom custom;
+    public int killCount;
+    public int deathCount;
+    public int playerId;
 }

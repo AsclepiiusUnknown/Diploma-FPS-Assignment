@@ -4493,7 +4493,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f0a51ff72ca03478b01b1c99bd4eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerId: 0
   maxHealth: 100
+  onDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &470379783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6933,7 +6948,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31abc85b9aa4feb4894986741c8d8daf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPaused: 0
   pauseUI: {fileID: 186452924}
   gameUI: {fileID: 703638773}
   mouseLook: {fileID: 470379778}
@@ -6949,8 +6963,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bcc6bdfd0b63124594bb5969e736275, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1: {fileID: 0}
-  player2: {fileID: 0}
+  player1:
+    custom: {fileID: 0}
+    killCount: 0
+    deathCount: 0
+    playerId: 1
+  player2:
+    custom: {fileID: 0}
+    killCount: 0
+    deathCount: 0
+    playerId: 2
+  winningCount: 3
   victoryUI: {fileID: 466527917}
   winText: {fileID: 1785223848}
   winMessage: ' has won the match!!'
@@ -10738,7 +10761,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f0a51ff72ca03478b01b1c99bd4eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerId: 0
   maxHealth: 100
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!54 &996475418
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14823,7 +14850,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f0a51ff72ca03478b01b1c99bd4eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerId: 0
   maxHealth: 100
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!54 &1588490531
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19023,7 +19054,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f0a51ff72ca03478b01b1c99bd4eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerId: 0
   maxHealth: 100
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1981690778
 MonoBehaviour:
   m_ObjectHideFlags: 0
