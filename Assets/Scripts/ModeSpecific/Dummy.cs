@@ -6,6 +6,8 @@ public class Dummy : MonoBehaviour
 {
     public float maxHp = 10;
     private float hp;
+    [HideInInspector]
+    public bool isRespawning = false;
 
     void Start()
     {
@@ -26,13 +28,13 @@ public class Dummy : MonoBehaviour
     {
         if (_isHeadshot)
         {
-            Die();
+            StartCoroutine(Die());
             return;
         }
 
         if (hp <= 0)
         {
-            Die();
+            StartCoroutine(Die());
         }
         else
         {
@@ -41,9 +43,10 @@ public class Dummy : MonoBehaviour
         }
     }
 
-    void Die()
+    IEnumerator Die()
     {
         SetKinematic(false);
+        yield return new WaitForSeconds(3);
         gameObject.SetActive(false);
     }
 }

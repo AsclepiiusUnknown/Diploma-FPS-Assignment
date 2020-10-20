@@ -40,7 +40,7 @@ public class GMPractice : MonoBehaviour
                 return;
             }
 
-            if (!sceneDummies[i].gameObject.activeSelf)
+            if (!sceneDummies[i].gameObject.activeSelf && !sceneDummies[i].isRespawning)
             {
                 StartCoroutine(RespawnDummy(respawnTime, sceneDummies[i]));
             }
@@ -49,6 +49,8 @@ public class GMPractice : MonoBehaviour
 
     public IEnumerator RespawnDummy(float _respawnTime, Dummy _dummy)
     {
+        _dummy.isRespawning = true;
+
         yield return new WaitForSeconds(_respawnTime);
 
         float _closestDist = float.MaxValue;
@@ -67,5 +69,7 @@ public class GMPractice : MonoBehaviour
 
         sceneDummies.Remove(_dummy);
         sceneDummies.Add(_dummyGO.GetComponent<Dummy>());
+
+        _dummy.isRespawning = false;
     }
 }

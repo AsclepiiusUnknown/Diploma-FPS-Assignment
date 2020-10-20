@@ -13,15 +13,11 @@ public class Scoping : MonoBehaviour
     #region ||General
     [TabGroup("General")]
     public GameObject crosshair;
-    [TabGroup("General")]
-    private Camera mainCam;
-    [TabGroup("General")]
-    private GameObject weaponCam;
 
     //*PRIVATE
     [HideInInspector]
-    public bool _isScoping = false;
-    private bool _wasScoping = false;
+    public bool isScoping = false;
+    private bool wasScoping = false;
     private float ogFOV;
     #endregion
 
@@ -30,6 +26,10 @@ public class Scoping : MonoBehaviour
     public GameObject scopeOverlay;
     [TabGroup("Snipers Only")]
     public float scopedFOV = 15;
+    [TabGroup("Snipers Only")]
+    public Camera mainCam;
+    [TabGroup("Snipers Only")]
+    public GameObject weaponCam;
     #endregion
 
     #region ||Refrences
@@ -56,69 +56,80 @@ public class Scoping : MonoBehaviour
     #region |Scoping Input 
     public void Update()
     {
-        if (this.enabled && MouseLook._isScoping != this._isScoping)
-            MouseLook._isScoping = this._isScoping;
+        if (this.enabled && MouseLook._isScoping != this.isScoping)
+            MouseLook._isScoping = this.isScoping;
 
-        if (scopeOverlay.activeSelf && (WeaponHandler.currentType != GunTypes.Sniper || !_isScoping))
+        if (scopeOverlay.activeSelf && (WeaponHandler.currentType != GunTypes.Sniper || !isScoping))
             scopeOverlay.SetActive(false);
 
         if (Input.GetMouseButtonDown(1) || _player.GetButtonDown("Scope"))
-            _isScoping = true;
+            isScoping = true;
         else if (Input.GetMouseButtonUp(1) || _player.GetButtonUp("Scope"))
-            _isScoping = false;
+            isScoping = false;
 
-        if (_isScoping && !_wasScoping)
+        if (isScoping && !wasScoping)
         {
+            print("entered scoping");
             UpdateScoping(true);
         }
-        else if (!_isScoping && _wasScoping)
+        else if (!isScoping && wasScoping)
         {
+            print("exited scoping");
             UpdateScoping(false);
         }
-        else if (_isScoping && !_custom._isWalking)
-        {
-            UpdateScoping(false);
-        }
-        else
-        {
-            UpdateScoping(_isScoping);
-        }
+        // if (_isScoping && !_wasScoping)
+        // {
+        //     UpdateScoping(true);
+        // }
+        // else if (!_isScoping && _wasScoping)
+        // {
+        //     UpdateScoping(false);
+        // }
+        // else if (_isScoping && !_custom._isWalking)
+        // {
+        //     UpdateScoping(false);
+        // }
+        // else
+        // {
+        //     UpdateScoping(_isScoping);
+        // }
 
-        _wasScoping = _isScoping;
+        wasScoping = isScoping;
     }
     #endregion
 
     #region |Scoping
-    void UpdateScoping(bool isScoping)
+    void UpdateScoping(bool _isScoping)
     {
-        _isScoping = isScoping;
-        _gun.animator.SetBool("Scoping", isScoping);
-        _custom._canRun = !isScoping;
-        crosshair.SetActive(!isScoping);
+        isScoping = _isScoping;
+        _gun.animator.SetBool("Scoping", _isScoping);
+        _custom._canRun = !_isScoping;
+        crosshair.SetActive(!_isScoping);
 
-        if (WeaponHandler.currentType == GunTypes.Sniper && isScoping)
+        if (WeaponHandler.currentType == GunTypes.Sniper)
         {
-            if (isScoping)
-            {
-                StartCoroutine(OnSniperScoped());
-            }
+            if (_isScoping)
+                StartCoroutine(SniperScopeIn());
             else
-            {
-                scopeOverlay.SetActive(false);
-                weaponCam.SetActive(true);
-                mainCam.fieldOfView = ogFOV;
-            }
+                SniperScopeOut();
         }
     }
 
     #region ||Sniper Overlay
-    IEnumerator OnSniperScoped()
+    IEnumerator SniperScopeIn()
     {
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.5f); //delay
 
-        scopeOverlay.SetActive(true);
-        weaponCam.SetActive(false);
-        mainCam.fieldOfView = scopedFOV;
+        scopeOverlay.SetActive(true); //overaly
+        weaponCam.SetActive(false); //weapon rendering
+        mainCam.fieldOfView = scopedFOV; //FOV / Zoom
+    }
+
+    void SniperScopeOut()
+    {
+        mainCam.fieldOfView = ogFOV; //FOV / Zoom
+        weaponCam.SetActive(true); //weapon rendering
+        scopeOverlay.SetActive(false); //overaly
     }
     #endregion
     #endregion
