@@ -132,7 +132,7 @@ namespace FPS
 
             #region |Rotate View
 
-            if (mouseLook != null)
+            if (mouseLook != null && mouseLook.enabled)
                 mouseLook.LookRotation(transform, _cam.transform);
             else
                 print("**NULL**");
@@ -282,7 +282,8 @@ namespace FPS
             //Update the cameras position if we are using head bob animations
             UpdateCameraPosition(speed);
 
-            mouseLook.UpdateCursorLock();
+            if (mouseLook.enabled)
+                mouseLook.UpdateCursorLock();
         }
 
         private void OnControllerColliderHit(ControllerColliderHit hit)

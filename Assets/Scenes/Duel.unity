@@ -4255,6 +4255,7 @@ MonoBehaviour:
   coyoteJump: 0.2
   grndRem: 0.2
   mouseLook:
+    enabled: 1
     xSensitivity: 3
     ySensitivity: 3
     scopingMultiplier: 0.5
@@ -4493,17 +4494,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f0a51ff72ca03478b01b1c99bd4eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerId: 0
   maxHealth: 100
   onDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 701061410}
+        m_MethodName: AddKill
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6960,23 +6960,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 701061408}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bcc6bdfd0b63124594bb5969e736275, type: 3}
+  m_Script: {fileID: 11500000, guid: 85074b6478d25e547be18a0f8598c842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1:
-    custom: {fileID: 0}
+  players:
+  - custom: {fileID: 470379778}
+    playerId: 0
     killCount: 0
     deathCount: 0
+  - custom: {fileID: 1981690778}
     playerId: 1
-  player2:
-    custom: {fileID: 0}
     killCount: 0
     deathCount: 0
-    playerId: 2
-  winningCount: 3
-  victoryUI: {fileID: 466527917}
+  killsToWin: 3
+  deathsToLose: 5
+  victoryUi: {fileID: 466527917}
   winText: {fileID: 1785223848}
-  winMessage: ' has won the match!!'
+  winPrefix: ' has won the game!!'
 --- !u!1 &703638773
 GameObject:
   m_ObjectHideFlags: 0
@@ -8229,9 +8229,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crosshair: {fileID: 747900429}
-  _isScoping: 0
+  isScoping: 0
   scopeOverlay: {fileID: 660760854}
   scopedFOV: 15
+  mainCam: {fileID: 0}
+  weaponCam: {fileID: 0}
 --- !u!114 &834813690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10761,7 +10763,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f0a51ff72ca03478b01b1c99bd4eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerId: 0
   maxHealth: 100
   onDeath:
     m_PersistentCalls:
@@ -12351,9 +12352,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crosshair: {fileID: 747900429}
-  _isScoping: 0
+  isScoping: 0
   scopeOverlay: {fileID: 660760854}
   scopedFOV: 15
+  mainCam: {fileID: 0}
+  weaponCam: {fileID: 0}
 --- !u!114 &1188971369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14113,9 +14116,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crosshair: {fileID: 747900429}
-  _isScoping: 0
+  isScoping: 0
   scopeOverlay: {fileID: 660760854}
   scopedFOV: 15
+  mainCam: {fileID: 0}
+  weaponCam: {fileID: 0}
 --- !u!114 &1473912195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14850,7 +14855,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f0a51ff72ca03478b01b1c99bd4eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerId: 0
   maxHealth: 100
   onDeath:
     m_PersistentCalls:
@@ -18141,9 +18145,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crosshair: {fileID: 747900429}
-  _isScoping: 0
+  isScoping: 0
   scopeOverlay: {fileID: 660760854}
   scopedFOV: 15
+  mainCam: {fileID: 0}
+  weaponCam: {fileID: 0}
 --- !u!114 &1883830478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19054,11 +19060,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f0a51ff72ca03478b01b1c99bd4eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerId: 0
   maxHealth: 100
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 701061410}
+        m_MethodName: AddKill
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1981690778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19084,6 +19100,7 @@ MonoBehaviour:
   coyoteJump: 0.2
   grndRem: 0.2
   mouseLook:
+    enabled: 1
     xSensitivity: 3
     ySensitivity: 3
     scopingMultiplier: 0.5
@@ -20565,9 +20582,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crosshair: {fileID: 1961272882217195}
-  _isScoping: 0
+  isScoping: 0
   scopeOverlay: {fileID: 660760854}
   scopedFOV: 15
+  mainCam: {fileID: 0}
+  weaponCam: {fileID: 0}
 --- !u!1 &1331367858047059
 GameObject:
   m_ObjectHideFlags: 0
@@ -20762,9 +20781,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crosshair: {fileID: 1961272882217195}
-  _isScoping: 0
+  isScoping: 0
   scopeOverlay: {fileID: 660760854}
   scopedFOV: 15
+  mainCam: {fileID: 0}
+  weaponCam: {fileID: 0}
 --- !u!1 &1635495680224491
 GameObject:
   m_ObjectHideFlags: 0
@@ -20869,9 +20890,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crosshair: {fileID: 1961272882217195}
-  _isScoping: 0
+  isScoping: 0
   scopeOverlay: {fileID: 660760854}
   scopedFOV: 15
+  mainCam: {fileID: 0}
+  weaponCam: {fileID: 0}
 --- !u!1 &1748258694388651
 GameObject:
   m_ObjectHideFlags: 0
@@ -22547,9 +22570,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crosshair: {fileID: 1961272882217195}
-  _isScoping: 0
+  isScoping: 0
   scopeOverlay: {fileID: 660760854}
   scopedFOV: 15
+  mainCam: {fileID: 0}
+  weaponCam: {fileID: 0}
 --- !u!1 &143553803334622016
 GameObject:
   m_ObjectHideFlags: 0

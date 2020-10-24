@@ -3,32 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using FPS;
+using FPS.GameModes;
 
 public class Target : MonoBehaviour
 {
     [System.Serializable]
     public class DeathEvent : UnityEvent<Target> { }
 
-    [HideInInspector]
-    public int playerId;
-
     public float maxHealth = 100f;
+    float currentHealth;
 
     public DeathEvent onDeath = new DeathEvent();
 
-    private float currentHealth;
-
-    private void Awake()
-    {
-        if (GetComponent<FpsCustom>() == FindObjectOfType<GM1v1>().player1.custom)
-        {
-            playerId = 1;
-        }
-        else if (GetComponent<FpsCustom>() == FindObjectOfType<GM1v1>().player1.custom)
-        {
-            playerId = 2;
-        }
-    }
 
     private void Start()
     {
@@ -48,7 +34,12 @@ public class Target : MonoBehaviour
 
     void Die()
     {
-        gameObject.SetActive(false);
         onDeath.Invoke(this);
+        gameObject.SetActive(false);
+    }
+
+    public void Reset()
+    {
+        currentHealth = maxHealth;
     }
 }

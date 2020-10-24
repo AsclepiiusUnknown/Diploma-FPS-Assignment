@@ -8,6 +8,9 @@ namespace FPS
     [Serializable]
     public class MouseLook
     {
+        [HideInInspector]
+        public bool enabled = true;
+
         public float xSensitivity = 2f;
         public float ySensitivity = 2f;
         public float scopingMultiplier = .5f;

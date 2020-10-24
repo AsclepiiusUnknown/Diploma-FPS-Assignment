@@ -17,7 +17,7 @@ namespace FPS
             m_NextStep = m_StepCycle / 2f;
             jumping = false;
             audioSource = GetComponent<AudioSource>();
-            m_MouseLook.Init(transform, m_Camera.transform);
+            MouseLook.Init(transform, m_Camera.transform);
         }
 
 
@@ -91,7 +91,7 @@ namespace FPS
             ProgressStepCycle(speed);
             UpdateCameraPosition(speed);
 
-            m_MouseLook.UpdateCursorLock();
+            MouseLook.UpdateCursorLock();
         }
 
 
@@ -203,13 +203,13 @@ namespace FPS
 
         private void RotateView()
         {
-            if (m_MouseLook == null)
+            if (MouseLook == null)
             {
                 print("**NULL**");
                 return;
             }
 
-            m_MouseLook.LookRotation(transform, m_Camera.transform);
+            MouseLook.LookRotation(transform, m_Camera.transform);
         }
 
         #region |VARIABLES
@@ -236,7 +236,7 @@ namespace FPS
 
         #region ||Mouse
 
-        [Header("Mouse")] public MouseLook m_MouseLook;
+        [Header("Mouse")] public MouseLook MouseLook;
 
         //*PRIVATE//
         private Camera m_Camera;

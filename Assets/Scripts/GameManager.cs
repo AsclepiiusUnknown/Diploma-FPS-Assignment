@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameModes gameMode = GameModes.None;
-    public static bool _gamePaused = false;
-    public static bool _gameOver = false;
+    public static bool gamePaused = false;
+    public static bool gameOver = false;
 
     public static void SetGameMode(string _modeName)
     {
@@ -20,14 +20,23 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(_sceneName);
     }
+
+    public void CycleMode()
+    {
+        int newMode = (int)GameManager.gameMode + 1;
+        if (newMode >= System.Enum.GetValues(typeof(GameModes)).Length)
+            newMode = 0;
+        GameManager.gameMode = (GameModes)newMode;
+        string modeValue = "MODE: " + System.Enum.GetName(typeof(GameModes), newMode); //*make this into a text element to display the cycling
+    }
 }
 
 [System.Serializable]
 public enum GameModes
 {
-    Practice,
-    Duel,
-    Flag,
-    TDM,
-    None
+    None = 0,
+    Practice = 1,
+    Duel = 2,
+    Flag = 3,
+    TDM = 4
 }

@@ -17,7 +17,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !GameManager._gameOver)
+        if (Input.GetKeyDown(KeyCode.Escape) && !GameManager.gameOver)
         {
             TogglePause();
         }
@@ -25,11 +25,11 @@ public class PauseMenu : MonoBehaviour
 
     public void TogglePause()
     {
-        GameManager._gamePaused = !GameManager._gamePaused;
-        Time.timeScale = (GameManager._gamePaused) ? 0 : 1;
-        mouseLook.enabled = (GameManager._gamePaused) ? false : true;//?add bool in mouselook to control pauses
-        gameUI.SetActive(GameManager._gamePaused);
-        pauseUI.SetActive(GameManager._gamePaused);
+        GameManager.gamePaused = !GameManager.gamePaused;
+        Time.timeScale = (GameManager.gamePaused) ? 0 : 1;
+        mouseLook.mouseLook.enabled = (GameManager.gamePaused) ? false : true;//?add bool in mouselook to control pauses
+        gameUI.SetActive(GameManager.gamePaused);
+        pauseUI.SetActive(GameManager.gamePaused);
     }
 
     public void ReturnToMenu()
@@ -38,7 +38,7 @@ public class PauseMenu : MonoBehaviour
         GameManager.gameMode = GameModes.None;
         print("Game Mode reset");
 
-        GameManager._gameOver = false;
+        GameManager.gameOver = false;
 
         SceneManager.LoadScene(0); //!assuming scene 0 is always main menu
     }

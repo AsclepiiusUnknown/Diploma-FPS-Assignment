@@ -298,4 +298,11 @@ public class Gun : MonoBehaviour
         #endregion
     }
     #endregion
+
+    public void Reset()
+    {
+        _currentAmmo = _totalAmmo;
+        animator.SetBool("Reloading", false);
+        _isReloading = false;
+    }
 }
