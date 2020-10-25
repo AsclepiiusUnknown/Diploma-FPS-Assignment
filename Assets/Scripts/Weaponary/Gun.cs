@@ -149,7 +149,7 @@ public class Gun : MonoBehaviour
             StopCoroutine(Reload());
 
         _isReloading = true;
-        print("Reloading...");
+        // print("Reloading...");
 
         if (reloadSound != "")
             AudioManager.instance.Play(reloadSound);

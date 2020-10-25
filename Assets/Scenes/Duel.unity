@@ -6966,12 +6966,18 @@ MonoBehaviour:
   players:
   - custom: {fileID: 470379778}
     playerId: 0
-    killCount: 0
-    deathCount: 0
+    kills: 0
+    deaths: 0
+    team:
+      runningKills: 0
+      runningDeaths: 0
   - custom: {fileID: 1981690778}
     playerId: 1
-    killCount: 0
-    deathCount: 0
+    kills: 0
+    deaths: 0
+    team:
+      runningKills: 0
+      runningDeaths: 0
   killsToWin: 3
   deathsToLose: 5
   victoryUi: {fileID: 466527917}
@@ -19060,7 +19066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f0a51ff72ca03478b01b1c99bd4eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 5
   onDeath:
     m_PersistentCalls:
       m_Calls:

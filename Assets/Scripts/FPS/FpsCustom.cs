@@ -134,7 +134,7 @@ namespace FPS
 
             if (mouseLook != null && mouseLook.enabled)
                 mouseLook.LookRotation(transform, _cam.transform);
-            else
+            else if (mouseLook == null)
                 print("**NULL**");
 
             #endregion

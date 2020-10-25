@@ -26,6 +26,9 @@ namespace FPS.GameModes
         public TextMeshProUGUI winText;
         public string winPrefix = " Team has won the game!!";
 
+        public Material redMat;
+        public Material blueMat;
+
 
         private void Start()
         {
@@ -44,11 +47,13 @@ namespace FPS.GameModes
                 {
                     players[i].team = Team.Red;
                     red.Add(players[i]);
+                    players[i].custom.gameObject.GetComponent<MeshRenderer>().material = redMat;
                 }
                 else
                 {
                     players[i].team = Team.Blue;
                     blue.Add(players[i]);
+                    players[i].custom.gameObject.GetComponent<MeshRenderer>().material = blueMat;
                 }
             }
 
@@ -62,23 +67,34 @@ namespace FPS.GameModes
                 Debug.LogError("**ERROR** \nThe Win Text element within GM1v1 has not been set!!");
         }
 
-        public void AddKill(int _playerId)
+        public void AddKill(FpsCustom _custom)
         {
-            for (int i = 0; i < players.Count; i++) //for all the players
+            int _playerId = 69;
+            for (int i = 0; i < players.Count; i++)
             {
-                if (i == _playerId) //if it was this index
+                if (_custom == players[i].custom)
                 {
-                    if (players[i].team == Team.Red) //if it was a red player that died
-                    {
-                        blueStats.runningKills++; //blue got a kill
-                        redStats.runningDeaths++; //red got a death
-                    }
-                    else if (players[i].team == Team.Blue) //if it was a blue player that died
-                    {
-                        redStats.runningKills++; //red got a kill
-                        blueStats.runningDeaths++; //blue got a death
-                    }
+                    _playerId = i;
                 }
+            }
+            if (_playerId == 69)
+                Debug.LogWarning("**WARNING** \nIt's possible something has gone wrong when getting the players ID within AddKill...");
+
+            //*
+
+            if (red.Contains(players[_playerId])) //if it was a red player that died
+            {
+                blueStats.runningKills++; //blue got a kill
+                redStats.runningDeaths++; //red got a death
+            }
+            else if (blue.Contains(players[_playerId])) //if it was a blue player that died
+            {
+                redStats.runningKills++; //red got a kill
+                blueStats.runningDeaths++; //blue got a death
+            }
+            else
+            {
+                Debug.LogWarning("**WARNING** \nSomething has possibly gone wrong within AddKill...");
             }
 
             //* Adding personal kills
@@ -91,24 +107,31 @@ namespace FPS.GameModes
             //     Debug.LogWarning("**WARNING** \nSomething has possibly gone wrong within AddKill...");
             **/
 
-            CheckForTeamWin(_playerId);
+            CheckForTeamWin(players[_playerId]);
         }
 
-        void CheckForTeamWin(int _playerId)
+        void CheckForTeamWin(TDMStats _player)
         {
-            if (redStats.runningKills >= teamKillsToWin || blueStats.runningKills >= teamKillsToWin)
+            if (redStats.runningKills >= teamKillsToWin)
             {
-                TeamWin(players[_playerId].team);
+                TeamWin(Team.Red);
             }
-            else if (redStats.runningDeaths >= teamDeathsToLose || blueStats.runningDeaths >= teamDeathsToLose)
+            else if (blueStats.runningKills >= teamKillsToWin)
             {
-                if (players[_playerId].team == Team.Red)
-                    TeamWin(Team.Blue);
-                else if (players[_playerId].team == Team.Blue)
-                    TeamWin(Team.Red);
+                TeamWin(Team.Blue);
+            }
+            else if (redStats.runningDeaths >= teamDeathsToLose)
+            {
+                TeamWin(Team.Blue);
+            }
+            else if (blueStats.runningDeaths >= teamDeathsToLose)
+            {
+                TeamWin(Team.Red);
             }
             else
-                StartCoroutine(RespawnPlayer(players[_playerId].custom.gameObject));
+            {
+                StartCoroutine(RespawnPlayer(_player.custom.gameObject));
+            }
         }
 
         void TeamWin(Team _winner)

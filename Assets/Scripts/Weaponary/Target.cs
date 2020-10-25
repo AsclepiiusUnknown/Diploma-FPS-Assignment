@@ -24,7 +24,7 @@ public class Target : MonoBehaviour
     public void TakeDamage(float _damage)
     {
         currentHealth -= _damage;
-        print("Health -" + _damage);
+        // print("Health -" + _damage);
 
         if (currentHealth <= 0f)
         {
