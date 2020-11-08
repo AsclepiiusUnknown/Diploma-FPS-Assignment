@@ -1,6 +1,6 @@
 ﻿using Rewired;
-using UnityEngine;
 using Sirenix.OdinInspector;
+using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace FPS
@@ -11,10 +11,26 @@ namespace FPS
         #region |VARIABLES
 
         #region ||Movement
-        [Header("Movement")] public float walkSpeed = 5;
+        [Header("Movement")]
+        /// <summary>
+        /// The speed at which the player moves when 'walking'
+        /// </summary>
+        public float walkSpeed = 5;
+        /// <summary>
+        /// The speed at which the player moves when 'running'
+        /// </summary>
         public float runSpeed = 10;
+        /// <summary>
+        /// Whether or not the player can change velocity while free-falling
+        /// </summary>
         public bool canAirWalk;
+        /// <summary>
+        /// The distance that each artificial 'step' takes
+        /// </summary>
         [Range(0f, 1f)] public float runStepLength = .7f;
+        /// <summary>
+        /// The amount of damping applied to the player when they are free-falling (only applicable when <c> canAirWalk == true </c>)
+        /// </summary>
         public float midAirDamping;
         public float movementDamping;
 
@@ -382,7 +398,7 @@ namespace FPS
             float moveAvg = (Mathf.Abs(_moveDir.x) + Mathf.Abs(_moveDir.z)) / 2;
             if (_controller.velocity.sqrMagnitude > 0 && (_moveInput.x != 0 || _moveInput.y != 0))
                 _stepCycle += (_controller.velocity.magnitude + moveAvg * (_isWalking ? 1f : runStepLength)) *
-                              Time.fixedDeltaTime;
+                Time.fixedDeltaTime;
 
             if (!(_stepCycle > _nextStep)) return;
 
