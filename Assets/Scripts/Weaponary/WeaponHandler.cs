@@ -3,6 +3,7 @@ using Rewired;
 using UnityEngine.UI;
 using FPS;
 
+[SerializeField]
 public class WeaponHandler : MonoBehaviour
 {
     #region |Variables
@@ -14,7 +15,7 @@ public class WeaponHandler : MonoBehaviour
 
     #region ||General
     public int selectedWeapon = 0;
-    public Image[] gunIcons;
+    [SerializeField] private Image[] gunIcons;
     #endregion
 
     #region ||References
@@ -23,7 +24,7 @@ public class WeaponHandler : MonoBehaviour
     #endregion
 
     #region ||Flash Light
-    public GameObject flashLight;
+    [SerializeField] private GameObject flashLight;
     #endregion
     #endregion
 
@@ -51,7 +52,7 @@ public class WeaponHandler : MonoBehaviour
 
         #region |ScrollWheel & D-Pad
         //* Increase Selection
-        if (GetInputs() > 0)
+        if (GetSwitchInputs() > 0)
         {
             if (selectedWeapon >= transform.childCount - 1)
                 selectedWeapon = 0;
@@ -59,7 +60,7 @@ public class WeaponHandler : MonoBehaviour
                 selectedWeapon++;
         }
         //* Decrease Selection
-        else if (GetInputs() < 0)
+        else if (GetSwitchInputs() < 0)
         {
             if (selectedWeapon <= 0)
                 selectedWeapon = transform.childCount - 1;
@@ -92,7 +93,11 @@ public class WeaponHandler : MonoBehaviour
             ToggleLight();
     }
 
-    int GetInputs()
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
+    public int GetSwitchInputs()
     {
         if (_player == null)
             _player = _custom._player;
@@ -107,7 +112,10 @@ public class WeaponHandler : MonoBehaviour
     }
 
     #region |Apply Selection
-    void SelectWeapon()
+    /// <summary>
+    /// Used to select the weapon using the variable \link #selectedWeapon selectedWeapon.
+    /// </summary>
+    public void SelectWeapon()
     {
         int i = 0;
         foreach (Transform weapon in transform)
@@ -128,6 +136,22 @@ public class WeaponHandler : MonoBehaviour
         }
     }
     #endregion
+
+    /// <summary>
+    /// This does something cool.
+    /// </summary>
+    /// Usage:
+    /// @code
+    /// public float GetValueOf(float _myParam)
+    /// {
+    ///     return _myParam;
+    /// }
+    /// @endcode
+    /// <param name="_myParam">A float value to return</param>
+    public float GetValueOf(float _myParam)
+    {
+        return _myParam;
+    }
 
     void ToggleLight()
     {
