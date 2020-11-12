@@ -365,8 +365,7 @@ namespace FPS
             if (_controller.velocity.magnitude > 0 && (grndRem > 0))
             {
                 var camTransform = _cam.transform;
-                camTransform.localPosition =
-                    headBob.DoHeadBob(_controller.velocity.magnitude + speed * (_isWalking ? 1f : runStepLength));
+                camTransform.localPosition = headBob.DoHeadBob(_controller.velocity.magnitude + speed * (_isWalking ? 1f : runStepLength));
                 newCameraPosition = camTransform.localPosition;
                 newCameraPosition.y = camTransform.localPosition.y - jumpBob.Offset();
             }
