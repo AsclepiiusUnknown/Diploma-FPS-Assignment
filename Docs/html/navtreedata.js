@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "Ragdoll", "index.html", [
+  [ "Diploma FPS Assignment", "index.html", [
     [ "Packages", "namespaces.html", [
       [ "Packages", "namespaces.html", "namespaces_dup" ],
       [ "Package Functions", "namespacemembers.html", [
