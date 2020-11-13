@@ -12,43 +12,24 @@ namespace FPS
 
         #region ||Movement
         [Header("Movement")]
-        /// <summary>
-        /// The speed at which the player moves when 'walking'
-        /// </summary>
         [SerializeField] private float walkSpeed = 5;
-        /// <summary>
-        /// The speed at which the player moves when 'running'
-        /// </summary>
         [SerializeField] private float runSpeed = 10;
-        /// <summary>
-        /// Whether or not the player can change velocity while free-falling
-        /// </summary>
         [SerializeField] private bool canAirWalk;
-        /// <summary>
-        /// The distance that each artificial 'step' takes
-        /// </summary>
-        [Range(0f, 1f), SerializeField] private float runStepLength = .7f;
-        /// <summary>
-        /// The amount of damping applied to the player when they are free-falling (only applicable when <c> canAirWalk == true </c>)
-        /// </summary>
+        [Range(0f, 1f)]
+        [SerializeField] private float runStepLength = .7f;
         [SerializeField] private float midAirDamping;
-        /// <summary>
-        /// The amount of damping applied to the player when they on the ground (only applicable when <code>_isGrounded == true</code>)
-        /// </summary>
         [SerializeField] private float movementDamping;
 
         //*PRIVATE//
-        [HideInInspector] private bool _isWalking = true;
-        /// <summary>
-        /// A bool to check/control whether or not the player can run at any point in time.
-        /// </summary>
+        [HideInInspector] public bool _isWalking = true;
         [HideInInspector] public bool _canRun = true;
         private Vector2 _moveInput;
         private Vector3 _moveDir = Vector3.zero;
         #endregion
 
         #region ||Jumping
-        [Header("Jumping"), SerializeField] private float jumpSpeed = 10;
+        [Header("Jumping")]
+        [SerializeField] private float jumpSpeed = 10;
         [SerializeField] private float jumpCut = .5f;
         [SerializeField] private float coyoteJump = .2f;
         [SerializeField] private float grndRem = .2f;
@@ -61,15 +42,17 @@ namespace FPS
         #endregion
 
         #region ||Mouse
-        [Header("Mouse"), SerializeField] private MouseLook mouseLook;
+        [Header("Mouse")]
+        [SerializeField] private MouseLook mouseLook;
 
         //*PRIVATE//
         private Camera _cam;
         #endregion
 
         #region ||Gravity
-        [Header("Gravity"), SerializeField] private float gravityScale = 2;
-        private float groundForce = 10;
+        [Header("Gravity")]
+        [SerializeField] private float gravityScale = 2;
+        [SerializeField] private float groundForce = 10;
 
         //*PRIVATE
         /// <summary>
@@ -80,8 +63,8 @@ namespace FPS
 
         #region ||Audio
         [Header("Audio")]
-        [SerializeField] private AudioClip jumpSound;
-        [SerializeField] private AudioClip landSound;
+        [SerializeField] private AudioClip jumpSound; // the sound played when character leaves the ground.
+        [SerializeField] private AudioClip landSound; // the sound played when character touches back on ground.
         [SerializeField] private AudioClip[] footstepSounds; // an array of footstep sounds that will be randomly selected from.
 
         //*PRIVATE//
@@ -89,21 +72,23 @@ namespace FPS
         #endregion
 
         #region ||Effects
-        [Header("Effects")] private bool useFovKick = true;
-        private FOVKick fovKick = new FOVKick();
-        private bool useHeadBob = true;
-        private CurveControlledBob headBob = new CurveControlledBob();
-        private LerpControlledBob jumpBob = new LerpControlledBob();
-        private float stepInterval;
+        [Header("Effects")]
+        [SerializeField] private bool useFovKick = true;
+        [SerializeField] private FOVKick fovKick = new FOVKick();
+        [SerializeField] private bool useHeadBob = true;
+        [SerializeField] private CurveControlledBob headBob = new CurveControlledBob();
+        [SerializeField] private LerpControlledBob jumpBob = new LerpControlledBob();
+        [SerializeField] private float stepInterval;
         #endregion
 
         #region ||Collision
-        [Header("Collision")] private float impactForceMultiplier = .2f;
+        [Header("Collision")]
+        [SerializeField] private float impactForceMultiplier = .2f;
         #endregion
 
         #region ||Input
         [Header("Input")]
-        private int playerID = 0;
+        [SerializeField] private int playerID = 0;
         /// <summary>
         /// The reference to the player that this script should control (created by Rewired plugin which is handling the input within this project).
         /// </summary>
@@ -365,7 +350,8 @@ namespace FPS
             if (_controller.velocity.magnitude > 0 && (grndRem > 0))
             {
                 var camTransform = _cam.transform;
-                camTransform.localPosition = headBob.DoHeadBob(_controller.velocity.magnitude + speed * (_isWalking ? 1f : runStepLength));
+                camTransform.localPosition =
+                    headBob.DoHeadBob(_controller.velocity.magnitude + speed * (_isWalking ? 1f : runStepLength));
                 newCameraPosition = camTransform.localPosition;
                 newCameraPosition.y = camTransform.localPosition.y - jumpBob.Offset();
             }

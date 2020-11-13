@@ -54,8 +54,10 @@ namespace FPS
 
             if (smooth)
             {
-                character.localRotation = Quaternion.Slerp(character.localRotation, charTargetRot, smoothTime * Time.deltaTime);
-                camera.localRotation = Quaternion.Slerp(camera.localRotation, camTargetRot, smoothTime * Time.deltaTime);
+                character.localRotation = Quaternion.Slerp(character.localRotation, charTargetRot,
+                    smoothTime * Time.deltaTime);
+                camera.localRotation = Quaternion.Slerp(camera.localRotation, camTargetRot,
+                    smoothTime * Time.deltaTime);
             }
             else
             {
@@ -64,11 +66,6 @@ namespace FPS
             }
 
             UpdateCursorLock();
-        }
-
-        bool QuaternionIsNaN(Quaternion q)
-        {
-            return float.IsNaN(q.x) || float.IsNaN(q.y) || float.IsNaN(q.z) || float.IsNaN(q.w);
         }
 
         public void SetCursorLock(bool value)
@@ -119,9 +116,6 @@ namespace FPS
             angleX = Mathf.Clamp(angleX, minX, maxX);
 
             q.x = Mathf.Tan(0.5f * Mathf.Deg2Rad * angleX);
-
-            if (QuaternionIsNaN(q))
-                q = Quaternion.identity;
 
             return q;
         }

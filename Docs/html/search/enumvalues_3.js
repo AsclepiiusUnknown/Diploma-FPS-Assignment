@@ -1,9 +1,4 @@
 var searchData=
 [
-  ['deactivate_4616',['Deactivate',['../class_unity_standard_assets_1_1_utility_1_1_timed_object_activator.html#a4fd60b3607bc774ff633811e0b2b2090a109fec06829bd79d222cfc8af52aaaf1',1,'UnityStandardAssets.Utility.TimedObjectActivator.Deactivate()'],['../class_unity_standard_assets_1_1_utility_1_1_activate_trigger.html#a4e33cb00af0eb967c03fbe756f487b00a109fec06829bd79d222cfc8af52aaaf1',1,'UnityStandardAssets.Utility.ActivateTrigger.Deactivate()']]],
-  ['default_4617',['Default',['../class_rewired_1_1_u_i_1_1_control_mapper_1_1_calibration_window.html#ac9ad6473512f4b8cbb311781f864cd15a7a1920d61156abc05a60135aefe8bc67',1,'Rewired.UI.ControlMapper.CalibrationWindow.Default()'],['../class_rewired_1_1_u_i_1_1_control_mapper_1_1_input_behavior_window.html#a094ec64e554f8ce10d2ad1abadc7a3b9a7a1920d61156abc05a60135aefe8bc67',1,'Rewired.UI.ControlMapper.InputBehaviorWindow.Default()']]],
-  ['destroy_4618',['Destroy',['../class_unity_standard_assets_1_1_utility_1_1_timed_object_activator.html#a4fd60b3607bc774ff633811e0b2b2090a0e181f89f47654b86f3beb42f5cc08b8',1,'UnityStandardAssets::Utility::TimedObjectActivator']]],
-  ['diamond_4619',['Diamond',['../class_unity_engine_1_1_u_i_1_1_michsky_1_1_u_i_1_1_modern_u_i_pack_1_1_u_i_gradient.html#a4d0a54b95c7d8574ef1c5a8ceff3db08a8f7671185d590914ac21c7511767b699',1,'UnityEngine::UI::Michsky::UI::ModernUIPack::UIGradient']]],
-  ['done_4620',['Done',['../class_rewired_1_1_u_i_1_1_control_mapper_1_1_calibration_window.html#ac9ad6473512f4b8cbb311781f864cd15af92965e2c8a7afb3c1b9a5c09a263636',1,'Rewired.UI.ControlMapper.CalibrationWindow.Done()'],['../class_rewired_1_1_u_i_1_1_control_mapper_1_1_input_behavior_window.html#a094ec64e554f8ce10d2ad1abadc7a3b9af92965e2c8a7afb3c1b9a5c09a263636',1,'Rewired.UI.ControlMapper.InputBehaviorWindow.Done()']]],
-  ['duel_4621',['Duel',['../_game_manager_8cs.html#ae1530eae5079db496724a4857d911f09a0679ba9276b2173b33d169d0502857ba',1,'GameManager.cs']]]
+  ['none_496',['None',['../_game_manager_8cs.html#ae1530eae5079db496724a4857d911f09a6adf97f83acf6453d4a6a4b1070f3754',1,'GameManager.cs']]]
 ];

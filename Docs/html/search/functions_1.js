@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['buttonexists_3138',['ButtonExists',['../class_unity_standard_assets_1_1_cross_platform_input_1_1_cross_platform_input_manager.html#abaceaf9f4dfd3ddecf0ab364c84c3d2d',1,'UnityStandardAssets.CrossPlatformInput.CrossPlatformInputManager.ButtonExists()'],['../class_unity_standard_assets_1_1_cross_platform_input_1_1_virtual_input.html#a5d70deed210f91fc144d9a62cab4c535',1,'UnityStandardAssets.CrossPlatformInput.VirtualInput.ButtonExists()']]]
+  ['changecamera_320',['ChangeCamera',['../class_f_p_s_1_1_f_o_v_kick.html#adf76c7d4d5921eb243a03227fd2f7563',1,'FPS::FOVKick']]],
+  ['changescene_321',['ChangeScene',['../class_game_manager.html#a2353a31cabb952bda6e913928b596861',1,'GameManager']]]
 ];

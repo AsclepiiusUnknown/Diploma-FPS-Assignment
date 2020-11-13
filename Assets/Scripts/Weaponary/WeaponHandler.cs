@@ -3,7 +3,6 @@ using Rewired;
 using UnityEngine.UI;
 using FPS;
 
-[SerializeField]
 public class WeaponHandler : MonoBehaviour
 {
     #region |Variables
@@ -14,7 +13,7 @@ public class WeaponHandler : MonoBehaviour
     #endregion
 
     #region ||General
-    public int selectedWeapon = 0;
+    [SerializeField] private int selectedWeapon = 0;
     [SerializeField] private Image[] gunIcons;
     #endregion
 
@@ -52,7 +51,7 @@ public class WeaponHandler : MonoBehaviour
 
         #region |ScrollWheel & D-Pad
         //* Increase Selection
-        if (GetSwitchInputs() > 0)
+        if (GetScrollInputs() > 0)
         {
             if (selectedWeapon >= transform.childCount - 1)
                 selectedWeapon = 0;
@@ -60,7 +59,7 @@ public class WeaponHandler : MonoBehaviour
                 selectedWeapon++;
         }
         //* Decrease Selection
-        else if (GetSwitchInputs() < 0)
+        else if (GetScrollInputs() < 0)
         {
             if (selectedWeapon <= 0)
                 selectedWeapon = transform.childCount - 1;
@@ -94,10 +93,10 @@ public class WeaponHandler : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Public method used to get weapon-switching inputs from the scrollwheel.
     /// </summary>
-    /// <returns></returns>
-    public int GetSwitchInputs()
+    /// <returns>Returns either -1, 0, or 1. These are then added to the current weapon index to change said index accordingly.</returns>
+    int GetScrollInputs()
     {
         if (_player == null)
             _player = _custom._player;
@@ -115,7 +114,7 @@ public class WeaponHandler : MonoBehaviour
     /// <summary>
     /// Used to select the weapon using the variable \link #selectedWeapon selectedWeapon.
     /// </summary>
-    public void SelectWeapon()
+    void SelectWeapon()
     {
         int i = 0;
         foreach (Transform weapon in transform)
@@ -137,28 +136,15 @@ public class WeaponHandler : MonoBehaviour
     }
     #endregion
 
-    /// <summary>
-    /// This does something cool.
-    /// </summary>
-    /// Usage:
-    /// @code
-    /// public float GetValueOf(float _myParam)
-    /// {
-    ///     return _myParam;
-    /// }
-    /// @endcode
-    /// <param name="_myParam">A float value to return</param>
-    public float GetValueOf(float _myParam)
-    {
-        return _myParam;
-    }
-
     void ToggleLight()
     {
         flashLight.SetActive(!flashLight.activeSelf);
     }
 }
 
+/// <summary>
+/// An enumarator containing the possible options for types of guns including Rifle, Pistol, Shotgun, and Sniper.
+/// </summary>
 [System.Serializable]
 public enum GunTypes
 {

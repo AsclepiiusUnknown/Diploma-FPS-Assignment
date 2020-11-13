@@ -11,6 +11,9 @@ public class Gun : MonoBehaviour
     // * //
     #region ||Base
     [TabGroup("Base")]
+    /// <summary>
+    /// Using the #GunTypes enum this variable specifies the type of gun it is in order to allow for type-specific functionality.
+    /// </summary>
     public GunTypes gunType;
     [TabGroup("Base")]
     [SerializeField] private float damage = 10f;
@@ -51,6 +54,9 @@ public class Gun : MonoBehaviour
     [SerializeField] private float reloadTime = 1;
     [TabGroup("Ammo & Reload")]
     [SerializeField] private float cooldownTime = .25f;
+    /// <summary>
+    /// A reference to this guns animator component within the Unity editor to allow for each gun to have its own animations whilst still having a simple system for calling each animation using the same tiggers, bools, etc.
+    /// </summary>
     [TabGroup("Ammo & Reload")]
     public Animator animator;
     [TabGroup("Ammo & Reload")]

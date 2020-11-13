@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['objectresetter_2676',['ObjectResetter',['../class_unity_standard_assets_1_1_utility_1_1_object_resetter.html',1,'UnityStandardAssets::Utility']]],
-  ['oldwallrun_2677',['OldWallRun',['../class_old_wall_run.html',1,'']]]
+  ['weapon_284',['Weapon',['../class_weapon.html',1,'']]],
+  ['weaponhandler_285',['WeaponHandler',['../class_weapon_handler.html',1,'']]]
 ];
