@@ -13,8 +13,8 @@ public class WeaponHandler : MonoBehaviour
     #endregion
 
     #region ||General
-    public int selectedWeapon = 0;
-    public Image[] gunIcons;
+    [SerializeField] private int selectedWeapon = 0;
+    [SerializeField] private Image[] gunIcons;
     #endregion
 
     #region ||References
@@ -23,7 +23,7 @@ public class WeaponHandler : MonoBehaviour
     #endregion
 
     #region ||Flash Light
-    public GameObject flashLight;
+    [SerializeField] private GameObject flashLight;
     #endregion
     #endregion
 
@@ -51,7 +51,7 @@ public class WeaponHandler : MonoBehaviour
 
         #region |ScrollWheel & D-Pad
         //* Increase Selection
-        if (GetInputs() > 0)
+        if (GetScrollInputs() > 0)
         {
             if (selectedWeapon >= transform.childCount - 1)
                 selectedWeapon = 0;
@@ -59,7 +59,7 @@ public class WeaponHandler : MonoBehaviour
                 selectedWeapon++;
         }
         //* Decrease Selection
-        else if (GetInputs() < 0)
+        else if (GetScrollInputs() < 0)
         {
             if (selectedWeapon <= 0)
                 selectedWeapon = transform.childCount - 1;
@@ -92,7 +92,11 @@ public class WeaponHandler : MonoBehaviour
             ToggleLight();
     }
 
-    int GetInputs()
+    /// <summary>
+    /// Public method used to get weapon-switching inputs from the scrollwheel.
+    /// </summary>
+    /// <returns>Returns either -1, 0, or 1. These are then added to the current weapon index to change said index accordingly.</returns>
+    int GetScrollInputs()
     {
         if (_player == null)
             _player = _custom._player;
@@ -107,6 +111,9 @@ public class WeaponHandler : MonoBehaviour
     }
 
     #region |Apply Selection
+    /// <summary>
+    /// Used to select the weapon using the variable \link #selectedWeapon selectedWeapon.
+    /// </summary>
     void SelectWeapon()
     {
         int i = 0;
@@ -135,6 +142,9 @@ public class WeaponHandler : MonoBehaviour
     }
 }
 
+/// <summary>
+/// An enumarator containing the possible options for types of guns including Rifle, Pistol, Shotgun, and Sniper.
+/// </summary>
 [System.Serializable]
 public enum GunTypes
 {

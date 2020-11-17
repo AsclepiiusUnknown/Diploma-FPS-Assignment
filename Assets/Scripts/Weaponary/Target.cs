@@ -20,14 +20,15 @@ public class Target : MonoBehaviour
 
     private void Awake()
     {
-        if (GetComponent<FpsCustom>() == FindObjectOfType<GM1v1>().player1.custom)
-        {
-            playerId = 1;
-        }
-        else if (GetComponent<FpsCustom>() == FindObjectOfType<GM1v1>().player1.custom)
-        {
-            playerId = 2;
-        }
+        if (GameManager.gameMode == GameModes.Duel)
+            if (GetComponent<FpsCustom>() == FindObjectOfType<GM1v1>().player1.custom)
+            {
+                playerId = 1;
+            }
+            else if (GetComponent<FpsCustom>() == FindObjectOfType<GM1v1>().player1.custom)
+            {
+                playerId = 2;
+            }
     }
 
     private void Start()

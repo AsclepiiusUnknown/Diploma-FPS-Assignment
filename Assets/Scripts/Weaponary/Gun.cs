@@ -11,21 +11,24 @@ public class Gun : MonoBehaviour
     // * //
     #region ||Base
     [TabGroup("Base")]
+    /// <summary>
+    /// Using the #GunTypes enum this variable specifies the type of gun it is in order to allow for type-specific functionality.
+    /// </summary>
     public GunTypes gunType;
     [TabGroup("Base")]
-    public float damage = 10f;
+    [SerializeField] private float damage = 10f;
     [TabGroup("Base")]
-    public float range = 100f;
+    [SerializeField] private float range = 100f;
     [TabGroup("Base")]
-    public bool automatic = false;
+    [SerializeField] private bool automatic = false;
     [ShowIf("automatic"), TabGroup("Base")]
-    public float fireRate = 15f;
+    [SerializeField] private float fireRate = 15f;
     [TabGroup("Base")]
-    public float impactForce = 30;
+    [SerializeField] private float impactForce = 30;
     [TabGroup("Base")]
-    public Camera mainCam;
+    [SerializeField] private Camera mainCam;
     [TabGroup("Base")]
-    public GameObject weaponCam;
+    [SerializeField] private GameObject weaponCam;
 
     //*PRIVATE
     private Player _player;
@@ -35,28 +38,31 @@ public class Gun : MonoBehaviour
 
     #region ||Effects
     [TabGroup("Effects")]
-    public Transform muzzlePoint;
+    [SerializeField] private Transform muzzlePoint;
     [TabGroup("Effects")]
-    public GameObject muzzleFlash;
+    [SerializeField] private GameObject muzzleFlash;
     [TabGroup("Effects")]
-    public GameObject[] impactEffects;
+    [SerializeField] private GameObject[] impactEffects;
     #endregion
 
     #region ||Ammo & Reload
     [TabGroup("Ammo & Reload")]
-    public int currentAmmo = 10;
+    [SerializeField] private int currentAmmo = 10;
     [TabGroup("Ammo & Reload")]
-    public int rounds = 3;
+    [SerializeField] private int rounds = 3;
     [TabGroup("Ammo & Reload")]
-    public float reloadTime = 1;
+    [SerializeField] private float reloadTime = 1;
     [TabGroup("Ammo & Reload")]
-    public float cooldownTime = .25f;
+    [SerializeField] private float cooldownTime = .25f;
+    /// <summary>
+    /// A reference to this guns animator component within the Unity editor to allow for each gun to have its own animations whilst still having a simple system for calling each animation using the same tiggers, bools, etc.
+    /// </summary>
     [TabGroup("Ammo & Reload")]
     public Animator animator;
     [TabGroup("Ammo & Reload")]
-    public string reloadSound;
+    [SerializeField] private string reloadSound;
     [TabGroup("Ammo & Reload")]
-    public string cooldownSound;
+    [SerializeField] private string cooldownSound;
 
     //*PRIVATE
     private int _currentAmmo;
@@ -67,9 +73,9 @@ public class Gun : MonoBehaviour
 
     #region ||HUD
     [TabGroup("HUD")]
-    public TextMeshProUGUI currentAmmoText;
+    [SerializeField] private TextMeshProUGUI currentAmmoText;
     [TabGroup("HUD")]
-    public TextMeshProUGUI totalAmmoText;
+    [SerializeField] private TextMeshProUGUI totalAmmoText;
     #endregion
 
     #endregion

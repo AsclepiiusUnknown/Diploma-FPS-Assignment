@@ -1,6 +1,6 @@
 ﻿using Rewired;
-using UnityEngine;
 using Sirenix.OdinInspector;
+using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace FPS
@@ -11,25 +11,28 @@ namespace FPS
         #region |VARIABLES
 
         #region ||Movement
-        [Header("Movement")] public float walkSpeed = 5;
-        public float runSpeed = 10;
-        public bool canAirWalk;
-        [Range(0f, 1f)] public float runStepLength = .7f;
-        public float midAirDamping;
-        public float movementDamping;
+        [Header("Movement")]
+        [SerializeField] private float walkSpeed = 5;
+        [SerializeField] private float runSpeed = 10;
+        [SerializeField] private bool canAirWalk;
+        [Range(0f, 1f)]
+        [SerializeField] private float runStepLength = .7f;
+        [SerializeField] private float midAirDamping;
+        [SerializeField] private float movementDamping;
 
         //*PRIVATE//
         [HideInInspector] public bool _isWalking = true;
-        public bool _canRun = true;
+        [HideInInspector] public bool _canRun = true;
         private Vector2 _moveInput;
         private Vector3 _moveDir = Vector3.zero;
         #endregion
 
         #region ||Jumping
-        [Header("Jumping")] public float jumpSpeed = 10;
-        public float jumpCut = .5f;
-        public float coyoteJump = .2f;
-        public float grndRem = .2f;
+        [Header("Jumping")]
+        [SerializeField] private float jumpSpeed = 10;
+        [SerializeField] private float jumpCut = .5f;
+        [SerializeField] private float coyoteJump = .2f;
+        [SerializeField] private float grndRem = .2f;
 
         //*PRIVATE
         private bool _jumping;
@@ -39,47 +42,57 @@ namespace FPS
         #endregion
 
         #region ||Mouse
-        [Header("Mouse")] public MouseLook mouseLook;
+        [Header("Mouse")]
+        [SerializeField] private MouseLook mouseLook;
 
         //*PRIVATE//
         private Camera _cam;
         #endregion
 
         #region ||Gravity
-        [Header("Gravity")] public float gravityScale = 2;
-        public float groundForce = 10;
+        [Header("Gravity")]
+        [SerializeField] private float gravityScale = 2;
+        [SerializeField] private float groundForce = 10;
 
         //*PRIVATE
+        /// <summary>
+        /// A bool to check/control whether or not this script should be applying gravity to this player at any point in time.
+        /// </summary>
         [HideInInspector] public bool _useGravity = true;
         #endregion
 
         #region ||Audio
-        [Header("Audio")] public AudioClip jumpSound; // the sound played when character leaves the ground.
-        public AudioClip landSound; // the sound played when character touches back on ground.
-        public AudioClip[] footstepSounds; // an array of footstep sounds that will be randomly selected from.
+        [Header("Audio")]
+        [SerializeField] private AudioClip jumpSound; // the sound played when character leaves the ground.
+        [SerializeField] private AudioClip landSound; // the sound played when character touches back on ground.
+        [SerializeField] private AudioClip[] footstepSounds; // an array of footstep sounds that will be randomly selected from.
 
         //*PRIVATE//
         private AudioSource _audioSource;
         #endregion
 
         #region ||Effects
-        [Header("Effects")] public bool useFovKick = true;
-        public FOVKick fovKick = new FOVKick();
-        public bool useHeadBob = true;
-        public CurveControlledBob headBob = new CurveControlledBob();
-        public LerpControlledBob jumpBob = new LerpControlledBob();
-        public float stepInterval;
+        [Header("Effects")]
+        [SerializeField] private bool useFovKick = true;
+        [SerializeField] private FOVKick fovKick = new FOVKick();
+        [SerializeField] private bool useHeadBob = true;
+        [SerializeField] private CurveControlledBob headBob = new CurveControlledBob();
+        [SerializeField] private LerpControlledBob jumpBob = new LerpControlledBob();
+        [SerializeField] private float stepInterval;
         #endregion
 
         #region ||Collision
-        [Header("Collision")] public float impactForceMultiplier = .2f;
+        [Header("Collision")]
+        [SerializeField] private float impactForceMultiplier = .2f;
         #endregion
 
         #region ||Input
         [Header("Input")]
-        public int playerID = 0;
-        [HideInInspector]
-        public Player _player;
+        [SerializeField] private int playerID = 0;
+        /// <summary>
+        /// The reference to the player that this script should control (created by Rewired plugin which is handling the input within this project).
+        /// </summary>
+        [HideInInspector] public Player _player;
         #endregion
 
         #region ||Misc
@@ -382,7 +395,7 @@ namespace FPS
             float moveAvg = (Mathf.Abs(_moveDir.x) + Mathf.Abs(_moveDir.z)) / 2;
             if (_controller.velocity.sqrMagnitude > 0 && (_moveInput.x != 0 || _moveInput.y != 0))
                 _stepCycle += (_controller.velocity.magnitude + moveAvg * (_isWalking ? 1f : runStepLength)) *
-                              Time.fixedDeltaTime;
+                Time.fixedDeltaTime;
 
             if (!(_stepCycle > _nextStep)) return;
 
