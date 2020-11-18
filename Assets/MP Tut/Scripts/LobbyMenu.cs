@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Mirror;
 
 public class LobbyMenu : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class LobbyMenu : MonoBehaviour
     public Button startButton;
     public Button readyButton;
     public TMP_InputField playerNameInput;
+    public TextMeshProUGUI codeText;
 
     private GameNetworkManager network;
     private NetworkPlayer localPlayer;
@@ -17,6 +19,8 @@ public class LobbyMenu : MonoBehaviour
         network = GameNetworkManager.singleton as GameNetworkManager;
         playerNameInput.onEndEdit.AddListener(OnEndEditName);
         startButton.interactable = false;
+
+        codeText.text = NetworkManager.singleton.networkAddress;
     }
 
     private void Update()

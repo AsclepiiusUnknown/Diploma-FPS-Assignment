@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/MP Tut/Scenes/Offline.unity
+    guid: b62a215a28f9f2d4eb771159b1261781
+  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: a442476b01e30d74f84c7e9dd4db9f2f
   - enabled: 1
@@ -23,9 +26,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MP Tut/Scenes/Lobby.unity
     guid: 0a4e99b85c3a3634e84cc7719671203a
-  - enabled: 1
-    path: Assets/MP Tut/Scenes/Offline.unity
-    guid: b62a215a28f9f2d4eb771159b1261781
   - enabled: 1
     path: Assets/MP Tut/Scenes/Online.unity
     guid: 4a49860581419b147a35c2532607fe83
