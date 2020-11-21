@@ -504,7 +504,6 @@ GameObject:
   - component: {fileID: 1787963184}
   - component: {fileID: 1787963186}
   - component: {fileID: 1787963185}
-  - component: {fileID: 1787963187}
   - component: {fileID: 1787963188}
   - component: {fileID: 1787963189}
   m_Layer: 0
@@ -569,19 +568,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1787963183}
   m_CullTransparentMesh: 0
---- !u!114 &1787963187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1787963183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60efaffe6f5357640a79f09ad157a0e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvas: {fileID: 751808726}
 --- !u!225 &1787963188
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -618,7 +604,6 @@ GameObject:
   - component: {fileID: 1824899800}
   - component: {fileID: 1824899802}
   - component: {fileID: 1824899801}
-  - component: {fileID: 1824899803}
   - component: {fileID: 1824899804}
   m_Layer: 0
   m_Name: Item Slot
@@ -682,19 +667,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1824899799}
   m_CullTransparentMesh: 0
---- !u!114 &1824899803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1824899799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5519d001a6215944a22785872a75750, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentObject: {fileID: 0}
 --- !u!114 &1824899804
 MonoBehaviour:
   m_ObjectHideFlags: 0

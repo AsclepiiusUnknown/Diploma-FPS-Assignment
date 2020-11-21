@@ -10,8 +10,8 @@ public class ConnectionMenu : MonoBehaviour
 
     public void OnClickHost()
     {
-        NetworkManager.singleton.GetComponent<kcp2k.KcpTransport>().Port = codeManager.GenerateCode();
-        print(NetworkManager.singleton.networkAddress);
+        // NetworkManager.singleton.GetComponent<kcp2k.KcpTransport>().Port = codeManager.GenerateCode();
+        // print(NetworkManager.singleton.networkAddress);
         NetworkManager.singleton.StartHost();
     }
 

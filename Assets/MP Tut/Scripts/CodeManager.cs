@@ -12,6 +12,11 @@ public class CodeManager : MonoBehaviour
     string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     string numbers = "0123456789";
 
+ private void Start() 
+ { 
+     
+ }
+
     public void MakeCode()
     {
         print(GenerateCode());
