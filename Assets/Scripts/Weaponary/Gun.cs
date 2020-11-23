@@ -92,6 +92,13 @@ public class Gun : MonoBehaviour
             mainCam = Camera.main;
     }
 
+    private void Start()
+    {
+        WeaponHandler handler = GetComponentInParent<WeaponHandler>();
+        currentAmmoText = handler.currentAmmoText;
+        totalAmmoText = handler.totalAmmoText;
+    }
+
     private void OnEnable()
     {
         //Bug fixes for changing weapons mid-animation

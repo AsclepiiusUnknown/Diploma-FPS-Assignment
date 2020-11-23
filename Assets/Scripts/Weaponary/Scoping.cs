@@ -23,7 +23,7 @@ public class Scoping : MonoBehaviour
 
     #region ||Snipers Only
     [TabGroup("Snipers Only")]
-    public GameObject scopeOverlay;
+    public static GameObject scopeOverlay;
     [TabGroup("Snipers Only")]
     public float scopedFOV = 15;
     [TabGroup("Snipers Only")]
@@ -59,8 +59,12 @@ public class Scoping : MonoBehaviour
         if (this.enabled && MouseLook._isScoping != this.isScoping)
             MouseLook._isScoping = this.isScoping;
 
-        if (scopeOverlay.activeSelf && (WeaponHandler.currentType != GunTypes.Sniper || !isScoping))
-            scopeOverlay.SetActive(false);
+        if (scopeOverlay != null)
+        {
+            if (scopeOverlay.activeSelf && (WeaponHandler.currentType != GunTypes.Sniper || !isScoping))
+                scopeOverlay.SetActive(false);
+        }
+
 
         if (Input.GetMouseButtonDown(1) || _player.GetButtonDown("Scope"))
             isScoping = true;
@@ -108,10 +112,12 @@ public class Scoping : MonoBehaviour
 
         if (WeaponHandler.currentType == GunTypes.Sniper)
         {
-            if (_isScoping)
-                StartCoroutine(SniperScopeIn());
-            else
-                SniperScopeOut();
+            if (scopeOverlay == null)
+
+                if (_isScoping)
+                    StartCoroutine(SniperScopeIn());
+                else
+                    SniperScopeOut();
         }
     }
 

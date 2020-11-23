@@ -9,6 +9,20 @@ public class GameManager : MonoBehaviour
     public static GameModes gameMode = GameModes.None;
     public static bool _gamePaused = false;
     public static bool _gameOver = false;
+    public static LoadoutTypes loadout = LoadoutTypes.Assault;
+
+    private static GameManager instance;
+    public static GameManager Instance { get { return instance; } }
+
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+            Destroy(this.gameObject);
+        else
+            instance = this;
+
+        DontDestroyOnLoad(gameObject);
+    }
 
     public static void SetGameMode(string _modeName)
     {

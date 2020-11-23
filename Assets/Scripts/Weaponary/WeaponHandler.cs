@@ -2,6 +2,8 @@
 using Rewired;
 using UnityEngine.UI;
 using FPS;
+using System.Collections.Generic;
+using TMPro;
 
 public class WeaponHandler : MonoBehaviour
 {
@@ -14,7 +16,7 @@ public class WeaponHandler : MonoBehaviour
 
     #region ||General
     [SerializeField] private int selectedWeapon = 0;
-    [SerializeField] private Image[] gunIcons;
+    // [SerializeField] private Image[] gunIcons;
     #endregion
 
     #region ||References
@@ -27,6 +29,15 @@ public class WeaponHandler : MonoBehaviour
     #endregion
     #endregion
 
+    #region ||Loadouts
+    public List<Loadout> loadouts = new List<Loadout>();
+    #endregion
+
+    #region ||Gun HUD
+    public TextMeshProUGUI currentAmmoText;
+    public TextMeshProUGUI totalAmmoText;
+    #endregion
+
     #region |Setup
     private void Awake()
     {
@@ -36,6 +47,8 @@ public class WeaponHandler : MonoBehaviour
 
     private void Start()
     {
+        SelectLoadout();
+
         //Select first weapon to start
         SelectWeapon();
 
@@ -123,16 +136,51 @@ public class WeaponHandler : MonoBehaviour
             {
                 weapon.gameObject.SetActive(true);
                 currentType = weapon.GetComponent<Gun>().gunType;
-                gunIcons[i].color = Color.white;
+                // gunIcons[i].color = Color.white;
             }
             else
             {
                 weapon.gameObject.SetActive(false);
-                gunIcons[i].color = new Color32(178, 178, 178, 255);
+                // gunIcons[i].color = new Color32(178, 178, 178, 255);
             }
 
             i++;
         }
+    }
+    #endregion
+
+    #region |Loadout Selection
+    void SelectLoadout()
+    {
+        if (loadouts == null || loadouts.Count <= 0)
+        {
+            Debug.LogError("**ERROR**\nNo loadouts set in the weapon handler!!");
+            return;
+        }
+
+        //*Get Correct Loadout
+        Loadout tempLoadout = loadouts[0];
+        for (int i = 0; i < loadouts.Count; i++)
+        {
+            if (loadouts[i].loadoutType == GameManager.loadout)
+            {
+                tempLoadout = loadouts[i];
+            }
+        }
+
+        //*Destroy old children (Peter Pan Style)
+        for (int i = 0; i < transform.childCount; i++)
+            Destroy(transform.GetChild(i).gameObject);
+
+        //*Make New Primary
+        Vector3 tempPos = transform.position + tempLoadout.primaryWpn.transform.position;
+        Quaternion tempRot = tempLoadout.primaryWpn.transform.rotation;
+        Instantiate(tempLoadout.primaryWpn, tempPos, tempRot, transform);
+
+        //*Make New Secondary
+        tempPos = transform.position + tempLoadout.secondaryWpn.transform.position;
+        tempRot = tempLoadout.secondaryWpn.transform.rotation;
+        Instantiate(tempLoadout.secondaryWpn, tempPos, tempRot, transform);
     }
     #endregion
 
@@ -152,4 +200,13 @@ public enum GunTypes
     Pistol,
     Shotgun,
     Sniper
+}
+
+[System.Serializable]
+public struct Loadout
+{
+    public LoadoutTypes loadoutType;
+    // public Vector3 offsetPos;
+    public GameObject primaryWpn;
+    public GameObject secondaryWpn;
 }
