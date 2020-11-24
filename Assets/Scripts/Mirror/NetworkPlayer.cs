@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using Mirror;
+using System.Collections;
 
 public class NetworkPlayer : NetworkBehaviour
 {
@@ -80,8 +81,18 @@ public class NetworkPlayer : NetworkBehaviour
             if (player.isLocalPlayer)
             {
                 SceneManager.UnloadSceneAsync(lobbyScene);
-                SceneManager.LoadSceneAsync(gameScene, LoadSceneMode.Additive);
+                StartCoroutine(LoadGameScene());
+
+                gameplayPlayer.GetComponent<FPS.FpsCustomNetworked>().Setup();
             }
         }
+    }
+
+    private IEnumerator LoadGameScene()
+    {
+        yield return SceneManager.LoadSceneAsync(gameScene, LoadSceneMode.Additive);
+
+        Scene scene = SceneManager.GetSceneByName(gameScene);
+        SceneManager.SetActiveScene(scene);
     }
 }
