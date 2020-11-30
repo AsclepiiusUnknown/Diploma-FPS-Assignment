@@ -15,7 +15,7 @@ public class Ladder : MonoBehaviour
         {
             if (other.gameObject.GetComponent<FpsCustom>() != null)
             {
-                FpsCustom _custom = other.gameObject.GetComponent<FpsCustom>();
+                FpsCustomNetworked _custom = other.gameObject.GetComponent<FpsCustomNetworked>();
             }
 
             canClimb = true;

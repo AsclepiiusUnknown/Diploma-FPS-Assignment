@@ -41,7 +41,7 @@ public class NetworkPlayer : NetworkBehaviour
             CmdSetPlayerName(_name);
     }
 
-    private void Start()
+    private void Awake()
     {
         lobbyPlayer.SetActive(true);
         gameplayPlayer.SetActive(false);

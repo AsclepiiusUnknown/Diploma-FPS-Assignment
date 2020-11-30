@@ -8,11 +8,11 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseUI;
     public GameObject gameUI;
-    public FpsCustom mouseLook;
+    public FpsCustomNetworked mouseLook;
 
     private void Awake()
     {
-        mouseLook = FindObjectOfType<FpsCustom>();
+        mouseLook = FindObjectOfType<FpsCustomNetworked>();
     }
 
     private void Update()

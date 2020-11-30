@@ -129,8 +129,7 @@ namespace FPS
             #endregion
 
             #region |Cursor Setup
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            mouseLook.UpdateCursorLock();
             #endregion
         }
 

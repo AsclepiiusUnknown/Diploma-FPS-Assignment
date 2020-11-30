@@ -10,64 +10,64 @@ public class OldWallRun : MonoBehaviour
     public float speed;
     public float maxSpeed;
     public bool stickToWall = false;
-    public FpsCustom _custom;
+    public FpsCustomNetworked _custom;
 
     private bool _isWallRight, _isWallLeft;
     private bool _isWallRunning = false;
     private CharacterController _controller;
     private Player _player;
 
-    private void Start ()
+    private void Start()
     {
         _player = _custom._player;
-        _controller = GetComponent<CharacterController> ();
+        _controller = GetComponent<CharacterController>();
     }
 
-    private void Update ()
+    private void Update()
     {
-        CheckForWall ();
-        WallRunInput ();
+        CheckForWall();
+        WallRunInput();
     }
 
-    private void WallRunInput ()
+    private void WallRunInput()
     {
-        if ((_player.GetAxis ("Horizontal") > 0) && _isWallRight)
-            StartWallRun ();
-        if ((_player.GetAxis ("Horizontal") < 0) && _isWallLeft)
-            StartWallRun ();
+        if ((_player.GetAxis("Horizontal") > 0) && _isWallRight)
+            StartWallRun();
+        if ((_player.GetAxis("Horizontal") < 0) && _isWallLeft)
+            StartWallRun();
     }
 
-    void StartWallRun ()
+    void StartWallRun()
     {
         _custom._useGravity = false;
         _isWallRunning = true;
 
         if (_controller.velocity.magnitude <= maxSpeed)
         {
-            _controller.Move (transform.forward * (speed * Time.deltaTime));
+            _controller.Move(transform.forward * (speed * Time.deltaTime));
 
             if (stickToWall)
             {
                 if (_isWallRight)
-                    _controller.Move (transform.right * speed / 5 * Time.deltaTime);
+                    _controller.Move(transform.right * speed / 5 * Time.deltaTime);
                 else
-                    _controller.Move (-transform.right * speed / 5 * Time.deltaTime);
+                    _controller.Move(-transform.right * speed / 5 * Time.deltaTime);
             }
         }
     }
 
-    void StopWallRun ()
+    void StopWallRun()
     {
         _isWallRunning = false;
         _custom._useGravity = true;
     }
 
-    void CheckForWall ()
+    void CheckForWall()
     {
         var position = transform.position;
-        _isWallRight = Physics.Raycast (position, transform.right, checkDist, whatIsWall);
-        _isWallLeft = Physics.Raycast (position, -transform.right, checkDist, whatIsWall);
+        _isWallRight = Physics.Raycast(position, transform.right, checkDist, whatIsWall);
+        _isWallLeft = Physics.Raycast(position, -transform.right, checkDist, whatIsWall);
 
-        if (!_isWallLeft && !_isWallRight) StopWallRun ();
+        if (!_isWallLeft && !_isWallRight) StopWallRun();
     }
 }

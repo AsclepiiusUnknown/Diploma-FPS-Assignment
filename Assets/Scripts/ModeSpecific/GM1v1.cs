@@ -25,7 +25,7 @@ public class GM1v1 : MonoBehaviour
         }
     }
 
-    bool PlayersActive(FpsCustom _player1, FpsCustom _player2)
+    bool PlayersActive(FpsCustomNetworked _player1, FpsCustomNetworked _player2)
     {
         if (!_player1.gameObject.activeSelf || !_player2.gameObject.activeSelf)
         {
@@ -52,7 +52,7 @@ public class GM1v1 : MonoBehaviour
 [System.Serializable]
 public struct PlayerStats
 {
-    public FpsCustom custom;
+    public FpsCustomNetworked custom;
     public int killCount;
     public int deathCount;
     public int playerId;

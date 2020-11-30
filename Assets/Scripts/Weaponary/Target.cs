@@ -21,11 +21,11 @@ public class Target : MonoBehaviour
     private void Awake()
     {
         if (GameManager.gameMode == GameModes.Duel)
-            if (GetComponent<FpsCustom>() == FindObjectOfType<GM1v1>().player1.custom)
+            if (GetComponent<FpsCustomNetworked>() == FindObjectOfType<GM1v1>().player1.custom)
             {
                 playerId = 1;
             }
-            else if (GetComponent<FpsCustom>() == FindObjectOfType<GM1v1>().player1.custom)
+            else if (GetComponent<FpsCustomNetworked>() == FindObjectOfType<GM1v1>().player1.custom)
             {
                 playerId = 2;
             }

@@ -32,7 +32,6 @@ namespace FPS
             camTargetRot = camera.localRotation;
         }
 
-
         public void LookRotation(Transform character, Transform camera)
         {
             Vector2 input = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
@@ -71,12 +70,9 @@ namespace FPS
         public void SetCursorLock(bool value)
         {
             lockCursor = value;
-            if (!lockCursor)
-            {
-                //we force unlock the cursor if the user disable the cursor locking helper
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-            }
+            //we force unlock the cursor if the user disable the cursor locking helper
+            Cursor.lockState = (lockCursor) ? CursorLockMode.Locked : CursorLockMode.None;
+            Cursor.visible = !lockCursor;
         }
 
         public void UpdateCursorLock()

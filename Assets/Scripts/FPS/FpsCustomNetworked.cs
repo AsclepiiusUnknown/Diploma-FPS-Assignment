@@ -109,15 +109,20 @@ namespace FPS
 
         #endregion
 
+        public bool IsSetup { get { return isSetup; } }
         private bool isSetup = false;
+
+        private void Awake()
+        {
+            _player = ReInput.players.GetPlayer(playerID);
+        }
 
         public void Setup()
         {
             #region |Component Gathering
             _controller = GetComponent<CharacterController>();
             _audioSource = GetComponent<AudioSource>();
-            _cam = Camera.main;
-            _player = ReInput.players.GetPlayer(playerID);
+            _cam = transform.GetChild(0).GetComponent<Camera>(); // !!HACKY!!    Otherwise do getcomponents and check for MainCamera tag
             mouseLook._player = _player;
             #endregion
 
@@ -131,8 +136,7 @@ namespace FPS
             #endregion
 
             #region |Cursor Setup
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            mouseLook.UpdateCursorLock();
             #endregion
 
             isSetup = true;
@@ -142,6 +146,8 @@ namespace FPS
         {
             if (!isSetup)
                 return;
+
+            // Time.timeScale = 0;
 
             #region |Timers
 
@@ -208,6 +214,9 @@ namespace FPS
 
         private void FixedUpdate()
         {
+            if (!isSetup)
+                return;
+
             #region |Movement
 
             #region ||Input

@@ -16,14 +16,14 @@ public class LadderClimb : MonoBehaviour
     private bool isLadderFront;
     private bool isClimbing = false;
     private CharacterController controller;
-    private FpsCustom custom;
+    private FpsCustomNetworked custom;
     private Player player;
     private RaycastHit hit;
 
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
-        custom = GetComponent<FpsCustom>();
+        custom = GetComponent<FpsCustomNetworked>();
     }
 
     private void Start()

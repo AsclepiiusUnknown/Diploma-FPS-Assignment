@@ -10,7 +10,7 @@ public class GrenadeThrow : MonoBehaviour
 {
     public float throwForce = 40;
     public Transform launchPoint;
-    public FpsCustom _custom;
+    public FpsCustomNetworked _custom;
     [MinMaxSlider(0, 5, true)]
     public Vector2 holdMinMax;
 
@@ -38,6 +38,9 @@ public class GrenadeThrow : MonoBehaviour
 
     private void Update()
     {
+        if (!_custom.IsSetup)
+            return;
+
         if (_player.GetButtonDown("Grenade"))
         {
             _isHolding = true;
@@ -92,8 +95,8 @@ public class GrenadeThrow : MonoBehaviour
 
     void UpdateUI()
     {
-        grenadeCountText.text = grenadeInfo[_grenadeIndex]._currentAmount.ToString();
-        grenadeTypeText.text = grenadeInfo[_grenadeIndex].grenadeType.ToString();
+        //! grenadeTypeText.text = grenadeInfo[_grenadeIndex].grenadeType.ToString();
+        //! grenadeCountText.text = grenadeInfo[_grenadeIndex]._currentAmount.ToString();
     }
 }
 

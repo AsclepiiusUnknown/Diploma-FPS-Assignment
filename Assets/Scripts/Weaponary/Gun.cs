@@ -32,7 +32,7 @@ public class Gun : MonoBehaviour
 
     //*PRIVATE
     private Player _player;
-    private FpsCustom _custom;
+    private FpsCustomNetworked _custom;
     private float _nextFire = 0;
     #endregion
 
@@ -84,12 +84,17 @@ public class Gun : MonoBehaviour
     private void Awake()
     {
         //initial setup for guns 
-        _custom = GetComponentInParent<FpsCustom>();
+        _custom = GetComponentInParent<FpsCustomNetworked>();
         _currentAmmo = currentAmmo;
         _totalAmmo = currentAmmo * rounds;
 
         if (mainCam == null)
-            mainCam = Camera.main;
+        {
+            Camera[] cams = GetComponentsInParent<Camera>();
+            for (int i = 0; i < cams.Length; i++)
+                if (cams[i].gameObject.tag == "MainCamera")
+                    mainCam = cams[i];
+        }
     }
 
     private void Start()

@@ -5,17 +5,17 @@ using FPS;
 
 public class GMTDM : MonoBehaviour
 {
-    private List<FpsCustom> allPlayers;
-    private List<FpsCustom> redTeam = new List<FpsCustom>();
-    private List<FpsCustom> blueTeam = new List<FpsCustom>();
+    private List<FpsCustomNetworked> allPlayers;
+    private List<FpsCustomNetworked> redTeam = new List<FpsCustomNetworked>();
+    private List<FpsCustomNetworked> blueTeam = new List<FpsCustomNetworked>();
 
     private void Start()
     {
-        allPlayers = new List<FpsCustom>(FindObjectsOfType<FpsCustom>());
+        allPlayers = new List<FpsCustomNetworked>(FindObjectsOfType<FpsCustomNetworked>());
 
         for (int i = 0; i < allPlayers.Count; i++)
         {
-            FpsCustom temp = allPlayers[i];
+            FpsCustomNetworked temp = allPlayers[i];
             int randomIndex = Random.Range(i, allPlayers.Count);
             allPlayers[i] = allPlayers[randomIndex];
             allPlayers[randomIndex] = temp;

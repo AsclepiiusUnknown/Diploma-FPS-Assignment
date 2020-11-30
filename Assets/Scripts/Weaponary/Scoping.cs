@@ -34,7 +34,7 @@ public class Scoping : MonoBehaviour
 
     #region ||Refrences
     private Gun _gun;
-    private FpsCustom _custom;
+    private FpsCustomNetworked _custom;
     private Player _player;
     #endregion
     #endregion
@@ -44,7 +44,7 @@ public class Scoping : MonoBehaviour
     {
         _gun = GetComponent<Gun>();
         ogFOV = Camera.main.fieldOfView;
-        _custom = GetComponentInParent<FpsCustom>();
+        _custom = GetComponentInParent<FpsCustomNetworked>();
     }
 
     private void Start()
@@ -108,6 +108,12 @@ public class Scoping : MonoBehaviour
         isScoping = _isScoping;
         _gun.animator.SetBool("Scoping", _isScoping);
         _custom._canRun = !_isScoping;
+
+        if (crosshair == null)
+        {
+            crosshair = GetComponentInParent<WeaponHandler>().crosshair;
+        }
+
         crosshair.SetActive(!_isScoping);
 
         if (WeaponHandler.currentType == GunTypes.Sniper)

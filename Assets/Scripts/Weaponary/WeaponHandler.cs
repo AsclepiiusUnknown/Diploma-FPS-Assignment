@@ -21,7 +21,7 @@ public class WeaponHandler : MonoBehaviour
 
     #region ||References
     private Player _player;
-    private FpsCustom _custom;
+    private FpsCustomNetworked _custom;
     #endregion
 
     #region ||Flash Light
@@ -36,13 +36,14 @@ public class WeaponHandler : MonoBehaviour
     #region ||Gun HUD
     public TextMeshProUGUI currentAmmoText;
     public TextMeshProUGUI totalAmmoText;
+    public GameObject crosshair;
     #endregion
 
     #region |Setup
     private void Awake()
     {
         //Setup automated refrences
-        _custom = GetComponentInParent<FpsCustom>();
+        _custom = GetComponentInParent<FpsCustomNetworked>();
     }
 
     private void Start()
@@ -59,6 +60,9 @@ public class WeaponHandler : MonoBehaviour
 
     private void Update()
     {
+        if (!_custom.IsSetup)
+            return;
+
         //Our previous selection of weapon is what we have at the start of each frame
         int prevSelection = selectedWeapon;
 
