@@ -117,6 +117,9 @@ public class Gun : MonoBehaviour
 
     private void Update()
     {
+        if (!_custom.IsSetup)
+            return;
+
         #region |Checks
         //Reloading return
         if (_isReloading)
@@ -205,6 +208,12 @@ public class Gun : MonoBehaviour
     #endregion
 
     #region |Shooting Functionality
+    public void Shoot(bool _isLocalPlayer)
+    {
+        if (!_isLocalPlayer)
+            Shoot();
+    }
+
     void Shoot()
     {
         if (_currentAmmo <= 0)
@@ -227,6 +236,8 @@ public class Gun : MonoBehaviour
 
         //Start Cooldown
         StartCoroutine(Cooldown());
+
+        GetComponentInParent<NetworkPlayer>().Shoot();
     }
 
     void CheckHits()

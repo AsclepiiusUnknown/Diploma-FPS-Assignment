@@ -13,7 +13,7 @@ public class Ladder : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            if (other.gameObject.GetComponent<FpsCustom>() != null)
+            if (other.gameObject.GetComponent<FpsCustomNetworked>() != null)
             {
                 FpsCustomNetworked _custom = other.gameObject.GetComponent<FpsCustomNetworked>();
             }

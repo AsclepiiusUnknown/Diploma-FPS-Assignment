@@ -115,6 +115,7 @@ namespace FPS
         private void Awake()
         {
             _player = ReInput.players.GetPlayer(playerID);
+            mouseLook._player = _player;
         }
 
         public void Setup()
@@ -123,7 +124,8 @@ namespace FPS
             _controller = GetComponent<CharacterController>();
             _audioSource = GetComponent<AudioSource>();
             _cam = transform.GetChild(0).GetComponent<Camera>(); // !!HACKY!!    Otherwise do getcomponents and check for MainCamera tag
-            mouseLook._player = _player;
+            _cam.enabled = true;
+
             #endregion
 
             #region |Component Setup

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using FPS;
 using System.Collections.Generic;
 using TMPro;
+using Mirror.Experimental;
 
 public class WeaponHandler : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class WeaponHandler : MonoBehaviour
     #endregion
 
     #region ||References
+    public NetworkTransformChild _primary;
+    public NetworkTransformChild _secondary;
     private Player _player;
     private FpsCustomNetworked _custom;
     #endregion
@@ -39,6 +42,9 @@ public class WeaponHandler : MonoBehaviour
     public GameObject crosshair;
     #endregion
 
+    public bool useLoadout = false;
+
+
     #region |Setup
     private void Awake()
     {
@@ -48,7 +54,8 @@ public class WeaponHandler : MonoBehaviour
 
     private void Start()
     {
-        SelectLoadout();
+        if (useLoadout)
+            SelectLoadout();
 
         //Select first weapon to start
         SelectWeapon();
@@ -128,6 +135,15 @@ public class WeaponHandler : MonoBehaviour
     }
 
     #region |Apply Selection
+    public void SelectWeapon(int _index, bool _isLocalPlayer)
+    {
+        selectedWeapon = _index;
+        if (!_isLocalPlayer)
+        {
+            SelectWeapon();
+        }
+    }
+
     /// <summary>
     /// Used to select the weapon using the variable \link #selectedWeapon selectedWeapon.
     /// </summary>
@@ -150,6 +166,8 @@ public class WeaponHandler : MonoBehaviour
 
             i++;
         }
+
+        GetComponentInParent<NetworkPlayer>().SwitchWeapon(selectedWeapon);
     }
     #endregion
 
@@ -179,12 +197,15 @@ public class WeaponHandler : MonoBehaviour
         //*Make New Primary
         Vector3 tempPos = transform.position + tempLoadout.primaryWpn.transform.position;
         Quaternion tempRot = tempLoadout.primaryWpn.transform.rotation;
-        Instantiate(tempLoadout.primaryWpn, tempPos, tempRot, transform);
+        GameObject loadoutPrimary = Instantiate(tempLoadout.primaryWpn, tempPos, tempRot, transform);
 
         //*Make New Secondary
         tempPos = transform.position + tempLoadout.secondaryWpn.transform.position;
         tempRot = tempLoadout.secondaryWpn.transform.rotation;
-        Instantiate(tempLoadout.secondaryWpn, tempPos, tempRot, transform);
+        GameObject loadoutSecondary = Instantiate(tempLoadout.secondaryWpn, tempPos, tempRot, transform);
+
+        _primary.target = loadoutPrimary.transform;
+        _secondary.target = loadoutSecondary.transform;
     }
     #endregion
 

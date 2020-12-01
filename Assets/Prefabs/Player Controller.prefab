@@ -100,7 +100,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 12343
+    m_Bits: 14391
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -589,7 +589,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6803471955398337756
 Transform:
   m_ObjectHideFlags: 0
@@ -787,6 +787,7 @@ MonoBehaviour:
       type: 3}
   currentAmmoText: {fileID: 0}
   totalAmmoText: {fileID: 0}
+  crosshair: {fileID: 0}
 --- !u!1 &6803881814643984976
 GameObject:
   m_ObjectHideFlags: 0

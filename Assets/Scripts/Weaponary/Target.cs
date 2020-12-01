@@ -51,5 +51,6 @@ public class Target : MonoBehaviour
     {
         gameObject.SetActive(false);
         onDeath.Invoke(this);
+        print("DEAD");
     }
 }

@@ -56,6 +56,9 @@ public class Scoping : MonoBehaviour
     #region |Scoping Input 
     public void Update()
     {
+        if (!_custom.IsSetup)
+            return;
+
         if (this.enabled && MouseLook._isScoping != this.isScoping)
             MouseLook._isScoping = this.isScoping;
 
@@ -103,6 +106,12 @@ public class Scoping : MonoBehaviour
     #endregion
 
     #region |Scoping
+    public void UpdateScoping(bool _isScoping, bool _isLocalPlayer)
+    {
+        if (!_isLocalPlayer)
+            UpdateScoping(_isScoping);
+    }
+
     void UpdateScoping(bool _isScoping)
     {
         isScoping = _isScoping;

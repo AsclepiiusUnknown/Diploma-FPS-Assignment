@@ -4,7 +4,7 @@ using UnityEngine;
 using FPS;
 using Rewired;
 
-[RequireComponent(typeof(CharacterController), typeof(FpsCustom))]
+// [RequireComponent(typeof(CharacterController), typeof(FpsCustom))]
 public class LadderClimb : MonoBehaviour
 {
     public LayerMask whatIsLadder;

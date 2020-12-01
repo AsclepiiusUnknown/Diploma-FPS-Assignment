@@ -11,12 +11,22 @@ public class NetworkPlayer : NetworkBehaviour
     public GameObject lobbyPlayer;
     public GameObject gameplayPlayer;
 
+    public WeaponHandler weaponHandler;
+    public Gun gun;
+
     public string lobbyScene = "Lobby";
     public string gameScene = "Gameplay";
 
     private bool connectedToLobbyUI = false;
 
     private LobbyMenu lobby;
+
+
+    private void Start()
+    {
+        weaponHandler = GetComponentInChildren<WeaponHandler>();
+        gun = GetComponentInChildren<Gun>();
+    }
 
     public override void OnStartLocalPlayer()
     {
@@ -61,6 +71,65 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
+    public void SwitchWeapon(int _index)
+    {
+        if (isLocalPlayer)
+        {
+            CmdSwitchWeapon(_index);
+        }
+    }
+
+    public void Shoot()
+    {
+        if (isLocalPlayer)
+            CmdShoot();
+    }
+
+    #region Switch Weapon
+    [Command]
+    // Command is a server function
+    public void CmdSwitchWeapon(int _index)
+    {
+        RpcSwitchWeapon(_index);
+    }
+
+    [ClientRpc]
+    public void RpcSwitchWeapon(int _index)
+    {
+        weaponHandler.SelectWeapon(_index, isLocalPlayer);
+    }
+    #endregion
+
+    #region Shooting
+    [Command]
+    public void CmdShoot()
+    {
+        RpcShoot();
+    }
+
+    [ClientRpc]
+    public void RpcShoot()
+    {
+        gun.Shoot(isLocalPlayer);
+    }
+    #endregion
+
+    #region Scoping
+    // [Command]
+    // // Command is a server function
+    // public void CmdUpdateScoping(int _index)
+    // {
+    //     RpcUpdateScoping(_index);
+    // }
+
+    // [ClientRpc]
+    // public void RpcUpdateScoping(int _index)
+    // {
+    //     weaponHandler.SelectWeapon(_index, isLocalPlayer);
+    // }
+    #endregion
+
+
     [Command] public void CmdReadyPlayer(int _index, bool _isReady) => RpcReadyPlayer(_index, _isReady);
     [ClientRpc] public void RpcReadyPlayer(int _index, bool _isReady) => lobby?.SetReadyPlayer(_index, _isReady);
 
@@ -83,7 +152,7 @@ public class NetworkPlayer : NetworkBehaviour
                 SceneManager.UnloadSceneAsync(lobbyScene);
                 StartCoroutine(LoadGameScene());
 
-                gameplayPlayer.GetComponent<FPS.FpsCustomNetworked>().Setup();
+                player.gameplayPlayer.GetComponent<FPS.FpsCustomNetworked>().Setup();
             }
         }
     }
