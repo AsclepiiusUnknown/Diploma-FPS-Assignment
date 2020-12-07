@@ -134,6 +134,7 @@ MonoBehaviour:
   lobbyPlayer: {fileID: 330068419762249004}
   gameplayPlayer: {fileID: 7916935366347993501}
   weaponHandler: {fileID: 7916935366533021184}
+  gun: {fileID: 3167764112771449793}
   lobbyScene: Lobby
   gameScene: Mirror MP
 --- !u!114 &8322769882693089611
@@ -317,7 +318,7 @@ MonoBehaviour:
     localRotation: {x: 0, y: 0, z: 0, w: 0}
     localScale: {x: 0, y: 0, z: 0}
     movementSpeed: 0
-  target: {fileID: 0}
+  target: {fileID: 7916935367223370414}
 --- !u!1001 &3725694563684505563
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -471,6 +472,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3725694563684505563}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &7916935367223370414 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6803471953489802613, guid: 7ea7cebc56cdcd94d87fc5a6aa478ad7,
+    type: 3}
+  m_PrefabInstance: {fileID: 3725694563684505563}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4248915026365664624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -561,3 +568,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4248915026365664624}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3167764112771449793 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1225266179537456817, guid: fc92d078db8680f41847ac21ab620095,
+    type: 3}
+  m_PrefabInstance: {fileID: 4248915026365664624}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d51378500ab64d448cfd41261d5835f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

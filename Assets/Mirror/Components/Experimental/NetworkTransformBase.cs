@@ -193,7 +193,7 @@ namespace Mirror.Experimental
         // local position/rotation for VR support
         // SqrMagnitude is faster than Distance per Unity docs
         // https://docs.unity3d.com/ScriptReference/Vector3-sqrMagnitude.html
-
+ 
         bool HasMoved => syncPosition && Vector3.SqrMagnitude(lastPosition - targetTransform.localPosition) > localPositionSensitivity * localPositionSensitivity;
         bool HasRotated => syncRotation && Quaternion.Angle(lastRotation, targetTransform.localRotation) > localRotationSensitivity;
         bool HasScaled => syncScale && Vector3.SqrMagnitude(lastScale - targetTransform.localScale) > localScaleSensitivity * localScaleSensitivity;

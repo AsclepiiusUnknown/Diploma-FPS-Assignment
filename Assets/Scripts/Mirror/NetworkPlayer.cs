@@ -24,7 +24,9 @@ public class NetworkPlayer : NetworkBehaviour
 
     private void Start()
     {
+        if(weaponHandler==null)
         weaponHandler = GetComponentInChildren<WeaponHandler>();
+        if(gun==null)
         gun = GetComponentInChildren<Gun>();
     }
 
