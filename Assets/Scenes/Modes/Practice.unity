@@ -7279,12 +7279,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedWeapon: 0
-  gunIcons:
-  - {fileID: 1480706795}
-  - {fileID: 482843099}
-  - {fileID: 1047935171}
-  - {fileID: 736599399}
+  _primary: {fileID: 0}
+  _secondary: {fileID: 0}
   flashLight: {fileID: 412156361}
+  loadouts: []
+  currentAmmoText: {fileID: 0}
+  totalAmmoText: {fileID: 0}
+  crosshair: {fileID: 0}
+  useLoadout: 0
 --- !u!1 &656998087
 GameObject:
   m_ObjectHideFlags: 0
@@ -21574,7 +21576,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crosshair: {fileID: 1200894466}
   isScoping: 0
-  scopeOverlay: {fileID: 660760854}
   scopedFOV: 15
   mainCam: {fileID: 384610594}
   weaponCam: {fileID: 640822886}
@@ -21773,7 +21774,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crosshair: {fileID: 1200894466}
   isScoping: 0
-  scopeOverlay: {fileID: 660760854}
   scopedFOV: 15
   mainCam: {fileID: 0}
   weaponCam: {fileID: 0}
@@ -21882,7 +21882,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crosshair: {fileID: 1200894466}
   isScoping: 0
-  scopeOverlay: {fileID: 660760854}
   scopedFOV: 15
   mainCam: {fileID: 0}
   weaponCam: {fileID: 0}
@@ -23483,7 +23482,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crosshair: {fileID: 1200894466}
   isScoping: 0
-  scopeOverlay: {fileID: 660760854}
   scopedFOV: 15
   mainCam: {fileID: 0}
   weaponCam: {fileID: 0}

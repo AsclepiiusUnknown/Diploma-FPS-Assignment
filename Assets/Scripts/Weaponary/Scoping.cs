@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using FPS;
 using Rewired;
 using Sirenix.OdinInspector;
-using FPS;
+using UnityEngine;
 
 [RequireComponent(typeof(Gun))]
 public class Scoping : MonoBehaviour
@@ -49,6 +49,8 @@ public class Scoping : MonoBehaviour
 
     private void Start()
     {
+        if (_custom._player == null)
+            print("woops");
         _player = _custom._player;
     }
     #endregion
@@ -67,7 +69,6 @@ public class Scoping : MonoBehaviour
             if (scopeOverlay.activeSelf && (WeaponHandler.currentType != GunTypes.Sniper || !isScoping))
                 scopeOverlay.SetActive(false);
         }
-
 
         if (Input.GetMouseButtonDown(1) || _player.GetButtonDown("Scope"))
             isScoping = true;
